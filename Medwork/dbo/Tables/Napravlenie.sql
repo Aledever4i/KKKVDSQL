@@ -71,7 +71,7 @@ CREATE NONCLUSTERED INDEX [idxNapravlenie_DataPriema]
 GO
 
 Create Trigger tgNapravlenie_InsertUpdate
-	On Napravlenie
+	On dbo.Napravlenie
 	For Update, Insert
 	AS
 begin

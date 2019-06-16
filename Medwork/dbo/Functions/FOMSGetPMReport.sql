@@ -47,7 +47,7 @@ BEGIN
 					cm.K_CHAR AS "CHAR_MAIN",
 					r.VisitPolCount AS "VISIT_POL",
 					r.VisitHomCount AS "VISIT_HOM",
-					r.VisitDSCount AS "VISIT_DS" ,
+					r.VisitDsCount AS "VISIT_DS" ,
 					r.VisitHSCount AS "VISIT_HS",
 					r.NSNDHOSP,
 					CASE WHEN p.IsChild = 1 THEN 22 ELSE 185 END AS "SPECFIC",

@@ -82,7 +82,7 @@ BEGIN
 							175 AS "PODR", -- Не обязательный. dbo.FOMSDEPARTS
 							r.ProfileHelpId AS "PROFIL", -- Обязательный. Каждой болезни выдать определенное значение.
 							p.IsChild AS "DET", -- Признак детского профиля	0-нет, 1-да. Заполняется в зависимости от профиля оказанной медицинской помощи. 14 - лет
-							p.cardnum AS "NHISTORY", -- Тут надо еще проанализировать тщательнее
+							p.CardNum AS "NHISTORY", -- Тут надо еще проанализировать тщательнее
 							r.HealingStartDate AS "DATE_1", -- Дата начала лечения
 							r.HealingEndDate AS "DATE_2", -- Дата окончания лечения
 							r.PreviewSickDictId AS "DS0", -- Диагноз первичный

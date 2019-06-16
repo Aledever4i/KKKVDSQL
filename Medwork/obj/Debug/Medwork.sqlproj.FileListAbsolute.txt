@@ -17,3 +17,12 @@ E:\Projects\Medwork\Medwork\obj\Debug\Medwork.dll
 E:\Projects\Medwork\Medwork\obj\Debug\Medwork.pdb
 E:\Projects\Medwork\Medwork\bin\Debug\Medwork.dll
 E:\Projects\Medwork\Medwork\bin\Debug\Medwork.pdb
+E:\Projects\KKKVDSQL\Medwork\bin\Debug\Medwork.dacpac
+E:\Projects\KKKVDSQL\Medwork\bin\Debug\Medwork.dll
+E:\Projects\KKKVDSQL\Medwork\bin\Debug\Medwork.pdb
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\Model.xml
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\refactor.xml
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\postdeploy.sql
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\predeploy.sql
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\Medwork.dll
+E:\Projects\KKKVDSQL\Medwork\obj\Debug\Medwork.pdb

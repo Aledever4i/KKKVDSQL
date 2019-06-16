@@ -1,7 +1,14 @@
-﻿
-create function fnPatCardLocation(@PatId int)
-returns nvarchar(100)
-as 
-begin
-	return (select Top 1 [Section] from patient where id=@PatId)
-end
+﻿CREATE FUNCTION dbo.fnPatCardLocation
+(
+	@PatId int
+)
+RETURNS nvarchar(100)
+AS
+BEGIN
+	return (
+		SELECT
+			Section
+			from dbo.Patient AS p
+			where p.ID = @PatId
+	)
+END

@@ -14,9 +14,9 @@ BEGIN
 END
 
 
-select * from dbo.TimeIntervals where DayScheduleID = 1918
-select * from dbo.CorrectionPatterns where DayScheduleID = 1918
-select * from dbo.RecurrencePatterns where DayScheduleID = 1918
+--select * from dbo.TimeIntervals where DayScheduleID = 1918
+--select * from dbo.CorrectionPatterns where DayScheduleID = 1918
+--select * from dbo.RecurrencePatterns where DayScheduleID = 1918
 
 
                 --ScheduleWeek scheduleWeek = new ScheduleWeek() {

@@ -326,7 +326,7 @@ ON dbo.Patient
 AFTER UPDATE
 AS
 set nocount on
-UPDATE Patient
+UPDATE dbo.Patient
 SET DateOfLastChange  =  GETDATE(), b_karta_aktualna=0 
 	WHERE ID IN (SELECT i.ID FROM INSERTED as i, deleted p where p.id=i.id and (i.LastName<>p.LastName
 		or i.FirstName<>p.FirstName or i.SecondName<>p.SecondName or i.CardNum<>p.CardNum

@@ -106,6 +106,8 @@
     <Folder Include="dbo\User Defined Types\" />
     <Folder Include="dbo\Tables\Tables2" />
     <Folder Include="dbo\Tables\Tables1" />
+    <Folder Include="dbo\Functions\old" />
+    <Folder Include="dbo\Stored Procedures\Old" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Views\FOMSVisitsView.sql">
@@ -374,5 +376,27 @@
     <Build Include="dbo\Tables\PovtorniyPriemDermatologa.sql" />
     <Build Include="dbo\Tables\PervichniyPriemDermatologa.sql" />
     <Build Include="dbo\Tables\PatForm.sql" />
+    <Build Include="dbo\Tables\selectpatients.sql" />
+    <Build Include="dbo\Tables\mkb10.sql" />
+    <Build Include="dbo\Tables\PatPolices.sql" />
+    <Build Include="dbo\Tables\CorrectionPatterns.sql" />
+    <Build Include="dbo\Tables\RecurrencePatterns.sql" />
+    <Build Include="dbo\Tables\EMRMessages.sql" />
+    <Build Include="dbo\Tables\VizovNaDom.sql" />
+    <Build Include="dbo\Tables\BillService.sql" />
+    <Build Include="dbo\Tables\AppointmentService.sql" />
+    <Build Include="dbo\Tables\Bill.sql" />
+    <Build Include="dbo\Tables\PaidSubService.sql" />
+    <Build Include="dbo\Tables\PaidService.sql" />
+    <Build Include="dbo\Tables\Kategoriya.sql" />
+    <Build Include="dbo\Tables\SubService.sql" />
+    <Build Include="dbo\Tables\CardLocation.sql" />
+    <Build Include="dbo\Functions\old\fnPatCardLocation.sql" />
+    <Build Include="dbo\Tables\Service.sql" />
+    <Build Include="dbo\Tables\Payment.sql" />
+    <Build Include="dbo\Stored Procedures\Old\AddZaklDiag.sql" />
+    <Build Include="dbo\Tables\ListZaklDiag.sql" />
+    <Build Include="dbo\Tables\ZaklDiag.sql" />
+    <Build Include="dbo\Tables\Raspisanie.sql" />
   </ItemGroup>
 </Project>
