@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Nozologii] (
+    [ID]               INT            NOT NULL,
+    [PatID]            INT            NULL,
+    [obrash_date]      DATETIME       NULL,
+    [zab_date]         DATETIME       NULL,
+    [Viyavlen]         NVARCHAR (200) NULL,
+    [Epid_nomer]       INT            NULL,
+    [Istochnik_zarazh] NVARCHAR (200) NULL,
+    [Lechenie]         NVARCHAR (200) NULL,
+    [KemNapr]          NVARCHAR (200) NULL,
+    [Sucheta_date]     DATETIME       NULL,
+    [primechan]        NVARCHAR (500) NULL,
+    [Diagnoz]          NVARCHAR (200) NULL,
+    [Kto_viyav1]       NVARCHAR (200) NULL,
+    [Bit_kontakt]      NVARCHAR (200) NULL,
+    [kol_kontakt]      NVARCHAR (200) NULL,
+    [opov_date]        DATETIME       NULL,
+    [Avtor_akta]       NVARCHAR (200) NULL,
+    [data_sostav]      DATETIME       NULL,
+    [Mesto_rab]        NVARCHAR (200) NULL,
+    [Klass_group]      NVARCHAR (200) NULL,
+    CONSTRAINT [NozologiiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [NozologiiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

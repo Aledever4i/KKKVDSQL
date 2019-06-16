@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[ECFResult] (
+    [Id]                            INT           NOT NULL,
+    [ParentId]                      INT           NULL,
+    [PatId]                         INT           NULL,
+    [ExecDate]                      DATETIME      NULL,
+    [PregRunId]                     INT           NULL,
+    [Resorbtion]                    INT           NULL,
+    [Reduction]                     INT           NULL,
+    [PregResId]                     INT           NULL,
+    [WeekNo]                        INT           NULL,
+    [OperId]                        INT           NULL,
+    [OriginalID]                    INT           NULL,
+    [BabyOutcome]                   NTEXT         NULL,
+    [Beremennost]                   NVARCHAR (50) NULL,
+    [Redykcia]                      NVARCHAR (50) NULL,
+    [SrokUgrozyPreryvaniya]         INT           NULL,
+    [Toksikoz1PoloviniBeremennosti] NVARCHAR (1)  NULL,
+    [Gestoz]                        NVARCHAR (1)  NULL,
+    [GestozComment]                 NTEXT         NULL,
+    [PrezhdevremennoeIzlitieOPlVod] NVARCHAR (1)  NULL,
+    [PrezhdevremComment]            NTEXT         NULL,
+    [Rody]                          NVARCHAR (50) NULL,
+    [OslozhneniyaVRodah]            NTEXT         NULL,
+    CONSTRAINT [PK_ECFResult] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_ECFResult_PatForm] FOREIGN KEY ([Id]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

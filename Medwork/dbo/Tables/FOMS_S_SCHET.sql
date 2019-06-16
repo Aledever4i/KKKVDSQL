@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[FOMS_S_SCHET]
+(
+    [Id] INT NOT NULL PRIMARY KEY
+)

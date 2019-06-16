@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[PovtorniyPriemAllergologa] (
+    [ID]                              INT           NOT NULL,
+    [PatID]                           INT           NULL,
+    [ObektivniyStatus]                NTEXT         NULL,
+    [SosudiVerhnihKonechnostey]       NTEXT         NULL,
+    [SosudiNizhnihKonechnostey]       NTEXT         NULL,
+    [PulsNaLevoySonnoyArterii]        INT           NULL,
+    [PulsNaPravoySonnoyArterii]       INT           NULL,
+    [AdNaPravoyVerhneyKonechnosti]    INT           NULL,
+    [AdNaPravoyVerhneyKonechnosti2]   INT           NULL,
+    [AdNaPravoyNizhneyKonechnosti2]   INT           NULL,
+    [AdNaPravoyNizhneyKonechnosti]    INT           NULL,
+    [PulsatsiyaBryushnoyChastiAorti1] NVARCHAR (1)  NULL,
+    [KozhniePokrovi]                  NVARCHAR (60) NULL,
+    [DopolnitelnieDannie]             NVARCHAR (50) NULL,
+    [AdNaLevoyNizhneyKonechnosti2]    INT           NULL,
+    [AdNaLevoyNizhneyKonechnosti]     INT           NULL,
+    [AdNaLevoyVerhneyKonechnosti]     INT           NULL,
+    [AdNaLevoyVerhneyKonechnosti2]    INT           NULL,
+    [Data]                            DATETIME      NULL,
+    [Vrach]                           INT           NULL,
+    CONSTRAINT [PovtorniyPriemAllergologaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PovtorniyPriemAllergologaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

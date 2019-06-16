@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[DiagLPUType] (
+    [ID]   NVARCHAR (12)  NOT NULL,
+    [Name] NVARCHAR (255) NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

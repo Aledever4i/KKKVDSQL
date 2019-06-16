@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[ObshiyAnalizKrovi] (
+    [ID]                INT        NOT NULL,
+    [PatID]             INT        NULL,
+    [Eritrotsiti]       FLOAT (53) NULL,
+    [Gemoglobin]        FLOAT (53) NULL,
+    [TsvPokazatel]      FLOAT (53) NULL,
+    [Trombotsiti]       FLOAT (53) NULL,
+    [Leykotsiti]        FLOAT (53) NULL,
+    [BazofiliV]         FLOAT (53) NULL,
+    [EozinofiliV]       FLOAT (53) NULL,
+    [NPalochkoyadernie] FLOAT (53) NULL,
+    [NSegmentoyadernie] FLOAT (53) NULL,
+    [Limfotsiti]        FLOAT (53) NULL,
+    [Monotsiti1]        FLOAT (53) NULL,
+    [Soe]               INT        NULL,
+    [Gematokrit]        FLOAT (53) NULL,
+    [MCV]               FLOAT (53) NULL,
+    [MCHC]              FLOAT (53) NULL,
+    [MCH]               INT        NULL,
+    [OAK]               NTEXT      NULL,
+    [Vrach]             INT        NULL,
+    [Data]              DATETIME   NULL,
+    CONSTRAINT [ObshiyAnalizKroviPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [ObshiyAnalizKroviToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

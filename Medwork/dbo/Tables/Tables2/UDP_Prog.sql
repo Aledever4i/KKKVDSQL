@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[UDP_Prog] (
+    [ID]     INT IDENTITY (1, 1) NOT NULL,
+    [BillID] INT NOT NULL,
+    [Prog]   INT NULL,
+    CONSTRAINT [UDP_ProgPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [UDP_ProgToUDP_Bill] FOREIGN KEY ([BillID]) REFERENCES [dbo].[UDP_Bill] ([ID]) ON DELETE CASCADE
+);
+

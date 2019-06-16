@@ -1,0 +1,9 @@
+﻿
+CREATE FUNCTION fnMinutes(@Value DATETIME)
+RETURNS INT
+BEGIN
+  DECLARE @V INT
+  
+  SELECT @V=DATEPART(hour,@Value)*60+DATEPART(minute,@Value)
+  RETURN @V
+END

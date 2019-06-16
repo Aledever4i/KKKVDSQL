@@ -1,0 +1,6 @@
+﻿
+CREATE FUNCTION fnServiceOrderPath(@ID INTEGER)
+RETURNS VARCHAR(8000)
+BEGIN
+  RETURN (SELECT REPLACE(dbo.fnServicePath(@ID), ' ', '¦'))
+END

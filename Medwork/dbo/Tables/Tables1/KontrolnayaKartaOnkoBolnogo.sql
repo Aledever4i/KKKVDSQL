@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[KontrolnayaKartaOnkoBolnogo] (
+    [ID]                    INT            NOT NULL,
+    [PatID]                 INT            NULL,
+    [CureFrom]              DATETIME       NULL,
+    [CureTo]                DATETIME       NULL,
+    [NewClinicGroup]        NVARCHAR (100) NULL,
+    [DateClinicGroupChange] DATETIME       NULL,
+    [NaimOnko]              NVARCHAR (100) NULL,
+    [ClinicGroup]           NVARCHAR (50)  NULL,
+    [CardNum]               INT            NULL,
+    [DataVzyatiyaNaUchet]   DATETIME       NULL,
+    [ZabolViyavlPri]        NVARCHAR (50)  NULL,
+    [DiagFirstTimeInLife]   BIT            NULL,
+    [Diag]                  INT            NULL,
+    [GistologichForma]      NTEXT          NULL,
+    [ChangedDiag]           INT            NULL,
+    [ChangingDate]          DATETIME       NULL,
+    [CureType]              NTEXT          NULL,
+    [MetodyIssledovaniya]   NVARCHAR (50)  NULL,
+    [PatronazhCheck]        NVARCHAR (50)  NULL,
+    [DateSnyatiyaSUcheta]   DATETIME       NULL,
+    [Reason]                NVARCHAR (50)  NULL,
+    [Vrach]                 INT            NULL,
+    [Sign]                  NVARCHAR (100) NULL,
+    CONSTRAINT [KontrolnayaKartaOnkoBolnogoPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [KontrolnayaKartaOnkoBolnogoToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

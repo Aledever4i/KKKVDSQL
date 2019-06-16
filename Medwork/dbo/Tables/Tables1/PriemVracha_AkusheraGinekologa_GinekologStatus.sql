@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[PriemVracha_AkusheraGinekologa_GinekologStatus] (
+    [ID]                          INT           NOT NULL,
+    [PatID]                       INT           NULL,
+    [RektalnoeObsledovanie]       NTEXT         NULL,
+    [RaspolozhenieMatki]          NVARCHAR (20) NULL,
+    [Uvelichena]                  NVARCHAR (50) NULL,
+    [PridatkiSpravaPrimechanie]   NTEXT         NULL,
+    [Npo]                         NTEXT         NULL,
+    [vulva]                       NTEXT         NULL,
+    [ovolosenie]                  NVARCHAR (50) NULL,
+    [Osm_v_zerkalah_vlagalishe]   NTEXT         NULL,
+    [OSM_v_zerkalah_sheika_matki] NTEXT         NULL,
+    [Osm_v_zerkalah_videlenia]    NTEXT         NULL,
+    [DVAI_sheikamatki]            NTEXT         NULL,
+    [konsistencia]                NVARCHAR (50) NULL,
+    [ogranichenavpodvizhnosti]    NVARCHAR (50) NULL,
+    [spaechniyprocess]            NVARCHAR (50) NULL,
+    [svodi]                       NTEXT         NULL,
+    [TrakciiZasheikuMatki]        NVARCHAR (50) NULL,
+    [pridatkisleva]               NTEXT         NULL,
+    [pridatkisprava]              NTEXT         NULL,
+    [matkamemo]                   NTEXT         NULL,
+    CONSTRAINT [PriemVracha_AkusheraGinekologa_GinekologStatusPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PriemVracha_AkusheraGinekologa_GinekologStatusToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

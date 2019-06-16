@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[UziSosudovPecheniISelezenki] (
+    [ID]                                INT          NOT NULL,
+    [PatID]                             INT          NULL,
+    [Diametr]                           INT          NULL,
+    [VDiametre]                         INT          NULL,
+    [ProsvetVeni]                       INT          NULL,
+    [NalichieTrombaVProsveteVeni]       NVARCHAR (1) NULL,
+    [VorothayaVDiametre]                INT          NULL,
+    [VorotnayaProsvetVeni]              INT          NULL,
+    [VorotnayaDiametr]                  INT          NULL,
+    [Kontur]                            INT          NULL,
+    [SdavlenieVeni]                     NVARCHAR (1) NULL,
+    [PrestenoticheskoeRasshirenieVeni]  NVARCHAR (1) NULL,
+    [OkklyuziyaVeni]                    NVARCHAR (1) NULL,
+    [AnevrizmaticheskoeRasshirenieVeni] NVARCHAR (1) NULL,
+    [SelezenochanayaVDiametre]          INT          NULL,
+    [DopolnitelnieDannieUzi]            NTEXT        NULL,
+    [Zaklyuchenie]                      INT          NULL,
+    [Vrach]                             INT          NULL,
+    [Data]                              DATETIME     NULL,
+    [NomerIssledovaniya]                INT          NULL,
+    [DannieNaPechat]                    NTEXT        NULL,
+    CONSTRAINT [UziSosudovPecheniISelezenkiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [UziSosudovPecheniISelezenkiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

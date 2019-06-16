@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[AdditionalAddress] (
+    [ID]                INT            NOT NULL,
+    [MasterID]          INT            NULL,
+    [useKLADR]          BIT            NULL,
+    [AdresIndeks]       NVARCHAR (20)  NULL,
+    [AdresStrana]       NVARCHAR (50)  NULL,
+    [AdresRegion]       NVARCHAR (50)  NULL,
+    [AdresRaionReg]     NVARCHAR (50)  NULL,
+    [AdresGorod]        NVARCHAR (100) NULL,
+    [AdresUlitsa]       NVARCHAR (70)  NULL,
+    [UlCodeEditBox]     NVARCHAR (17)  NULL,
+    [AdresOther]        NVARCHAR (200) NULL,
+    [AdresKvartira]     NVARCHAR (10)  NULL,
+    [AdresKorpus]       NVARCHAR (10)  NULL,
+    [AdresStroenie]     NVARCHAR (8)   NULL,
+    [AdresDom]          NVARCHAR (10)  NULL,
+    [Updatetime]        DATETIME       NULL,
+    [AdresRegionDict]   NVARCHAR (10)  NULL,
+    [AdresStranaDict]   NVARCHAR (10)  NULL,
+    [RegionCodeEditBox] NVARCHAR (10)  NULL,
+    [RaionCodeEditBox]  NVARCHAR (10)  NULL,
+    [GorodCodeEditBox]  NVARCHAR (10)  NULL,
+    [AddressType]       NVARCHAR (50)  NULL,
+    CONSTRAINT [AdditionalAddressPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [AdditionalAddressToPatient] FOREIGN KEY ([MasterID]) REFERENCES [dbo].[Patient] ([ID]) ON DELETE CASCADE
+);
+

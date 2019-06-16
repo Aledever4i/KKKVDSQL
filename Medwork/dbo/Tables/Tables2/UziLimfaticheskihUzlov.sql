@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[UziLimfaticheskihUzlov] (
+    [ID]                     INT           NOT NULL,
+    [PatID]                  INT           NULL,
+    [Data]                   DATETIME      NULL,
+    [NomerIssledovaniya]     INT           NULL,
+    [Vizualizatsiya]         INT           NULL,
+    [Kolichestvo]            NVARCHAR (50) NULL,
+    [Razmeri2]               INT           NULL,
+    [Razmeri1]               INT           NULL,
+    [Razmeri]                INT           NULL,
+    [Kontur]                 INT           NULL,
+    [Chetkost]               INT           NULL,
+    [EhoStruktura]           INT           NULL,
+    [EhoPlotnost]            INT           NULL,
+    [SOtrazheniyame]         NVARCHAR (1)  NULL,
+    [BezOtrazheniy]          NVARCHAR (1)  NULL,
+    [DopolnitelnieDannieUzi] NTEXT         NULL,
+    [Zaklyuchenie]           INT           NULL,
+    [Vrach]                  INT           NULL,
+    [Image]                  IMAGE         NULL,
+    [DannieNaPechat]         NTEXT         NULL,
+    CONSTRAINT [UziLimfaticheskihUzlovPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [UziLimfaticheskihUzlovToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

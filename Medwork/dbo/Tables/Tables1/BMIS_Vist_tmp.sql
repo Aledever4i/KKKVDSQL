@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[BMIS_Vist_tmp] (
+    [TableName]  VARCHAR (8)     NOT NULL,
+    [RecNo]      INT             NOT NULL,
+    [DATE]       DATETIME        NULL,
+    [NUMBER]     NUMERIC (7)     NULL,
+    [SERVICE]    NUMERIC (4)     NULL,
+    [KAT]        NUMERIC (1)     NULL,
+    [EXE_CODE]   NUMERIC (4)     NULL,
+    [DEP]        NUMERIC (2)     NULL,
+    [VIS_DIAGN]  NUMERIC (1)     NULL,
+    [VIS_CNSLT]  NUMERIC (1)     NULL,
+    [TYP_DOCTOR] NUMERIC (4)     NULL,
+    [AGE]        NUMERIC (3)     NULL,
+    [KIND_PAT]   NUMERIC (2)     NULL,
+    [PENSION]    NUMERIC (1)     NULL,
+    [PRIME]      NUMERIC (1)     NULL,
+    [REG]        NUMERIC (3)     NULL,
+    [TOWN_V]     NUMERIC (1)     NULL,
+    [DOG]        NVARCHAR (6)    NULL,
+    [DIAG]       NUMERIC (3)     NULL,
+    [NOZ]        NUMERIC (2)     NULL,
+    [PAYMENT]    NUMERIC (2)     NULL,
+    [EXT_SUM]    NUMERIC (11, 2) NULL,
+    [INT_SUM]    NUMERIC (8)     NULL,
+    [BRIEFNAME]  NVARCHAR (25)   NULL,
+    [GATHERED]   NUMERIC (1)     NULL
+);
+

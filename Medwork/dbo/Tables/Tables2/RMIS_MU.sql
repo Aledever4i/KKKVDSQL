@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[RMIS_MU] (
+    [ID]            INT           NOT NULL,
+    [MasterID]      INT           NULL,
+    [UslugiTapGUID] NVARCHAR (36) NULL,
+    [PATIENT]       NVARCHAR (36) NULL,
+    [COD_U]         NVARCHAR (36) NULL,
+    [DS]            NVARCHAR (6)  NULL,
+    [D_U]           DATETIME      NULL,
+    [P_U]           NVARCHAR (1)  NULL,
+    [COD]           NVARCHAR (15) NULL,
+    [K_U]           NVARCHAR (6)  NULL,
+    [ISHOD]         NVARCHAR (3)  NULL,
+    [RSLT]          NVARCHAR (3)  NULL,
+    [PROG]          NVARCHAR (10) NULL,
+    [CH_N]          NVARCHAR (1)  NULL,
+    [DISP]          NVARCHAR (1)  NULL,
+    [TRAVMA]        NVARCHAR (2)  NULL,
+    [D_TYPE]        NVARCHAR (3)  NULL,
+    [AP_ID]         NVARCHAR (36) NULL,
+    [C_I]           NVARCHAR (30) NULL,
+    [ND]            NVARCHAR (9)  NULL,
+    [CHD]           DATETIME      NULL,
+    CONSTRAINT [RMIS_MUPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

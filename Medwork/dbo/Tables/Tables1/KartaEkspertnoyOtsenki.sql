@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[KartaEkspertnoyOtsenki] (
+    [ID]                                      INT           NOT NULL,
+    [PatID]                                   INT           NULL,
+    [LechVrach]                               NVARCHAR (50) NULL,
+    [DiagnOsn]                                NVARCHAR (50) NULL,
+    [DefektObsled]                            NVARCHAR (50) NULL,
+    [DiagnozPostavlen]                        NVARCHAR (50) NULL,
+    [DefektiVNaznacheniiIProvedeniiLecheniya] NVARCHAR (50) NULL,
+    [ReshenieVoprosovVte]                     NVARCHAR (50) NULL,
+    [KachestvoVedeniyaIstoriiBolezni]         NVARCHAR (50) NULL,
+    [SrokiLecheniya]                          NVARCHAR (50) NULL,
+    [OtsenkaRabotiZavOtdeleniem]              NVARCHAR (50) NULL,
+    [DefektiNezavisyashieOtOtdeleniya]        NVARCHAR (50) NULL,
+    [RezultatLecheniya]                       NVARCHAR (50) NULL,
+    [DataEkspertizi]                          DATETIME      NULL,
+    [PlanStoim]                               FLOAT (53)    NULL,
+    [FaktStoim]                               FLOAT (53)    NULL,
+    [Ekspert]                                 NVARCHAR (50) NULL,
+    [Reekspert]                               NVARCHAR (50) NULL,
+    [Primech]                                 NTEXT         NULL,
+    [DiagnOsn1]                               NVARCHAR (50) NULL,
+    [Ekstrenno]                               BIT           NULL,
+    CONSTRAINT [KartaEkspertnoyOtsenkiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [KartaEkspertnoyOtsenkiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

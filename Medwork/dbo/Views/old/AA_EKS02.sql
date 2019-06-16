@@ -1,0 +1,23 @@
+﻿CREATE VIEW AA_EKS02
+AS
+SELECT A.[KORSIO]
+ ,A.[KORSLO]
+ ,A.[ELAZ]
+ ,A.[SIGMAX]
+ ,A.[SIGMIN]
+ ,A.[MAXZON]
+ ,A.[MINZON]
+ ,A.[PZON]
+ ,A.[IMDOPL]
+ ,A.[IMPOPL]
+ ,NULLIF(A.[PP1],'') [PP1]
+ ,NULLIF(A.[POSLE],'') [POSLE]
+ ,A.[IMDOPR]
+ ,A.[IMPODO]
+ ,A.[KODREL] [KODREL]
+ ,A.[NOMAMB] [NOMAMB]
+ ,A.[DATUSL] [DATUSL]
+ ,A.[EYE] [EYE]
+ ,A.[OP1] [OP1]
+FROM [DanniePoOperacii] A with (nolock)
+where A.KORSIO IS NOT NULL

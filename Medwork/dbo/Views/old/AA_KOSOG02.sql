@@ -1,0 +1,22 @@
+﻿CREATE VIEW AA_KOSOG02
+AS
+SELECT NULLIF(A.[MMKOD1],'') [MMKOD1]
+ ,NULLIF(A.[MMVID1],'') [MMVID1]
+ ,A.[MM1]
+ ,NULLIF(A.[MMKOD2],'') [MMKOD2]
+ ,NULLIF(A.[MMVID2],'') [MMVID2]
+ ,A.[MM2]
+ ,NULLIF(A.[MMKOD3],'') [MMKOD3]
+ ,NULLIF(A.[MMVID3],'') [MMVID3]
+ ,A.[MM3]
+ ,A.[UGGOR1]
+ ,A.[UGVER1]
+ ,A.[UGGOR2]
+ ,A.[UGVER2]
+ ,A.[KODREL] [KODREL]
+ ,A.[NOMAMB] [NOMAMB]
+ ,A.[DATUSL] [DATUSL]
+ ,A.[EYE] [EYE]
+ ,NULLIF(A.[OP1],'') [OP1]
+FROM [DanniePoOperacii] A with (nolock)
+where (nullif(MMKOD1,'') IS NOT NULL)

@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[RMISExportLog] (
+    [ID]         INT            NOT NULL,
+    [DSRC_NAME]  NVARCHAR (150) NULL,
+    [DSRC_STAT]  NVARCHAR (10)  NULL,
+    [DSRC_GUID]  NVARCHAR (36)  NULL,
+    [REPP_BEGD]  DATETIME       NULL,
+    [REPP_ENDD]  DATETIME       NULL,
+    [REGN_PRGM]  NVARCHAR (2)   NULL,
+    [XPRT_DATE]  DATETIME       NULL,
+    [ExportPath] NVARCHAR (200) NULL,
+    CONSTRAINT [RMISExportLogPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

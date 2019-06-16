@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[OsmotrOrtopeda] (
+    [ID]                INT           NOT NULL,
+    [PatID]             INT           NULL,
+    [Data]              DATETIME      NULL,
+    [Vrach]             NVARCHAR (50) NULL,
+    [DocTime]           DATETIME      NULL,
+    [Zhalobi]           NTEXT         NULL,
+    [AnamnezZhizni]     NTEXT         NULL,
+    [AnamnezZhizni1]    NTEXT         NULL,
+    [AnamnezZhizni2]    NTEXT         NULL,
+    [EpidAnamnes]       NTEXT         NULL,
+    [Operatsii]         NVARCHAR (1)  NULL,
+    [Operatsii2]        NTEXT         NULL,
+    [Transfuzii]        NVARCHAR (1)  NULL,
+    [Transfuzii2]       NTEXT         NULL,
+    [PlanObsledovaniya] NTEXT         NULL,
+    [PlanLecheniya]     NTEXT         NULL,
+    [Recomendacii]      NTEXT         NULL,
+    [VizualniyOsmotr]   NTEXT         NULL,
+    [SvodyStop]         NTEXT         NULL,
+    [Sustavy]           NTEXT         NULL,
+    CONSTRAINT [OsmotrOrtopedaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [OsmotrOrtopedaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

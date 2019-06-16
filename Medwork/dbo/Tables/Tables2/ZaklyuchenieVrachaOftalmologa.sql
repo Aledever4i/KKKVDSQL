@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[ZaklyuchenieVrachaOftalmologa] (
+    [ID]                INT           NOT NULL,
+    [PatID]             INT           NULL,
+    [PD1OD]             NVARCHAR (3)  NULL,
+    [PD2OD]             NVARCHAR (3)  NULL,
+    [PD3OD]             NVARCHAR (3)  NULL,
+    [PD4OD]             NVARCHAR (3)  NULL,
+    [PD1OS]             NVARCHAR (3)  NULL,
+    [PD2OS]             NVARCHAR (3)  NULL,
+    [PD3OS]             NVARCHAR (3)  NULL,
+    [PD4OS]             NVARCHAR (3)  NULL,
+    [KODZAKOD]          NVARCHAR (2)  NULL,
+    [TextZaklucheniyOD] NVARCHAR (50) NULL,
+    [TextZaklucheniyOS] NVARCHAR (50) NULL,
+    [KODZAKOS]          NVARCHAR (2)  NULL,
+    [FIBROOD]           NVARCHAR (1)  NULL,
+    [FIBROOS]           NVARCHAR (1)  NULL,
+    [PomOD]             NVARCHAR (1)  NULL,
+    [PomOS]             NVARCHAR (1)  NULL,
+    [Commen]            NTEXT         NULL,
+    [RecNo]             INT           NULL,
+    [ExportTime]        DATETIME      NULL,
+    [KODZAK]            NVARCHAR (2)  NULL,
+    [PD]                NVARCHAR (3)  NULL,
+    CONSTRAINT [ZaklyuchenieVrachaOftalmologaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [ZaklyuchenieVrachaOftalmologaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

@@ -1,0 +1,26 @@
+﻿CREATE TABLE dbo.FOMS_L_PERS
+(
+    Id int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    ID_PAC varchar(36) NULL,
+    FAM varchar(40) NULL,
+    IM varchar(40) NULL,
+    OT varchar(40) NULL,
+    W int NULL,
+    DR date NULL,
+    DOST varchar(1000) NULL,
+    TEL varchar(20) NULL,
+    FAM_P varchar(40) NULL,
+    IM_P varchar(40) NULL,
+    OT_P varchar(40) NULL,
+    W_P varchar(40) NULL,
+    DR_P date NULL,
+    DOST_P varchar(1000) NULL,
+    MR varchar(100) NULL,
+    DOCTYPE varchar(2) NULL,
+    DOCSER varchar(10) NULL,
+    DOCNUM varchar(20) NULL,
+    SNILS varchar(14) NULL,
+    OKATOG varchar(11) NULL,
+    OKATOP varchar(11) NULL,
+    COMENTP varchar(250) NULL
+)

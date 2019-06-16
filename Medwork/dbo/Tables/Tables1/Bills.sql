@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Bills] (
+    [ID] INT NOT NULL,
+    CONSTRAINT [BillsPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

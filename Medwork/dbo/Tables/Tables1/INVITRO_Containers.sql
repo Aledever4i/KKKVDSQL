@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[INVITRO_Containers] (
+    [ID]            INT            NOT NULL,
+    [Code]          NVARCHAR (10)  NULL,
+    [Name]          NVARCHAR (255) NULL,
+    [cOrder]        INT            NULL,
+    [IsBarCode]     BIT            NULL,
+    [IsBlood]       BIT            NULL,
+    [Tube_Code]     NVARCHAR (10)  NULL,
+    [ContType]      NVARCHAR (20)  NULL,
+    [Description]   NVARCHAR (256) NULL,
+    [IdTxt]         NVARCHAR (7)   NULL,
+    [ref]           VARCHAR (50)   NULL,
+    [parent]        VARCHAR (50)   NULL,
+    [isfolder]      BIT            NULL,
+    [biomat]        VARCHAR (50)   NULL,
+    [volume]        INT            NULL,
+    [iln]           VARCHAR (10)   NULL,
+    [double_code]   BIT            NULL,
+    [max_cnt]       INT            NULL,
+    [barcode_type]  VARCHAR (50)   NULL,
+    [id_on_barcode] BIT            NULL,
+    [micro_barcode] BIT            NULL,
+    CONSTRAINT [INVITRO_ContainersPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

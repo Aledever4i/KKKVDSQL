@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[MNTK_Krasn_Region] (
+    [ID]        INT           NOT NULL,
+    [REGIONOLD] NVARCHAR (26) NULL,
+    [KOD]       NVARCHAR (2)  NULL,
+    [REGION]    NVARCHAR (26) NULL,
+    [KODMINZDR] NVARCHAR (2)  NULL,
+    [KODTERR]   NVARCHAR (2)  NULL,
+    CONSTRAINT [MNTK_Krasn_RegionPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

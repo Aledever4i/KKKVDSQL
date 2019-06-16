@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[ProfosmotrDermatovenerolog] (
+    [ID]                         INT            NOT NULL,
+    [PatID]                      INT            NULL,
+    [Kommentrariy]               NTEXT          NULL,
+    [Zaklyuchenie]               NVARCHAR (100) NULL,
+    [Data]                       DATETIME       NULL,
+    [Vrach]                      INT            NULL,
+    [Zhalobi1]                   NTEXT          NULL,
+    [AnamnezZabolevaniya1]       NTEXT          NULL,
+    [KozhniePokroviChistie]      NVARCHAR (1)   NULL,
+    [NogteviePlastiniNeIzmeneni] NVARCHAR (1)   NULL,
+    [KozhniePokrovi2]            NVARCHAR (50)  NULL,
+    [MazokData]                  DATETIME       NULL,
+    [MazokNomer]                 INT            NULL,
+    [Otritsatelniy]              NVARCHAR (1)   NULL,
+    [AntitelaKTreponemePallidum] NVARCHAR (1)   NULL,
+    [Antitela]                   NVARCHAR (50)  NULL,
+    [GruppaD]                    NVARCHAR (2)   NULL,
+    [Vievleno]                   NVARCHAR (10)  NULL,
+    [DiagnozPoMkb10]             NVARCHAR (80)  NULL,
+    [KodPoMkb10]                 NVARCHAR (10)  NULL,
+    [Recommendation]             NTEXT          NULL,
+    CONSTRAINT [ProfosmotrDermatovenerologPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [ProfosmotrDermatovenerologToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

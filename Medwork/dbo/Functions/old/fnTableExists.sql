@@ -1,0 +1,17 @@
+﻿CREATE FUNCTION fnTableExists(@TableName CHAR(1024))
+RETURNS BIT
+BEGIN
+  DECLARE @Result BIT
+
+  IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = RTRIM(@TableName))
+    SET @Result = 1
+  ELSE
+    SET @Result = 0
+  RETURN @Result
+END
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[fnTableExists] TO PUBLIC
+    AS [dbo];
+

@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[NaznUZI] (
+    [ID]       INT NOT NULL,
+    [MasterID] INT NULL,
+    [DayNum]   INT NULL,
+    CONSTRAINT [NaznUZIPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [NaznUZIToECFStim] FOREIGN KEY ([MasterID]) REFERENCES [dbo].[ECFStim] ([Id]) ON DELETE CASCADE
+);
+

@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[UziZheludka] (
+    [ID]                                         INT          NOT NULL,
+    [PatID]                                      INT          NULL,
+    [Data]                                       DATETIME     NULL,
+    [NomerIssledovaniya]                         INT          NULL,
+    [Natoshak]                                   INT          NULL,
+    [Raspolozhen]                                INT          NULL,
+    [StenkaZheludka]                             INT          NULL,
+    [StenkaZheludka1]                            INT          NULL,
+    [VizuliziruyutsyaVseSloi]                    NVARCHAR (1) NULL,
+    [UtolshenaDo]                                INT          NULL,
+    [OpredelyaetsyaDopolnitelnoeObrazovanie]     NVARCHAR (1) NULL,
+    [VProektsiiZheludka]                         INT          NULL,
+    [Razmerom]                                   INT          NULL,
+    [Razmerom3]                                  INT          NULL,
+    [Razmerom1]                                  INT          NULL,
+    [SimptomPovishennoyPnevmotizatsiiPologoTela] NVARCHAR (1) NULL,
+    [DopolnitelnieDannieUzi]                     NTEXT        NULL,
+    [Zaklyuchenie]                               INT          NULL,
+    [RekomendovanaFsg]                           NVARCHAR (1) NULL,
+    [Vrach]                                      INT          NULL,
+    [Image]                                      IMAGE        NULL,
+    [DannieNaPechat]                             NTEXT        NULL,
+    CONSTRAINT [UziZheludkaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [UziZheludkaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

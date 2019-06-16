@@ -1,0 +1,5 @@
+﻿CREATE TABLE dbo.FOMS_V_ZAP
+(
+    Id int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    N_ZAP varchar(36) NULL
+)

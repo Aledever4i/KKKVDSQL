@@ -1,0 +1,4 @@
+﻿CREATE TYPE [dbo].[Array] AS TABLE (
+    [RecId] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([RecId] ASC));
+

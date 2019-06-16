@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[PriemVracha_Gastroenterologa_PishevaritelnayaSystema] (
+    [ID]                       INT           NOT NULL,
+    [PatID]                    INT           NULL,
+    [appetit]                  NVARCHAR (50) NULL,
+    [Zubi]                     NVARCHAR (50) NULL,
+    [Yazik]                    NVARCHAR (50) NULL,
+    [Yazik2]                   NVARCHAR (50) NULL,
+    [Jivot]                    NVARCHAR (50) NULL,
+    [Vzdut]                    NVARCHAR (1)  NULL,
+    [Diskoobrazniy]            NVARCHAR (1)  NULL,
+    [Zhivot]                   NVARCHAR (50) NULL,
+    [ssb]                      NVARCHAR (50) NULL,
+    [PriPalpatsiiBoleznennost] NVARCHAR (50) NULL,
+    [Pechen]                   NVARCHAR (50) NULL,
+    [VistupaetIzPodreberyaNa]  INT           NULL,
+    [Kray]                     NVARCHAR (50) NULL,
+    [palpselezenki2]           NVARCHAR (50) NULL,
+    [palpaciaselezenki]        NVARCHAR (50) NULL,
+    [simptomOrtnera]           NVARCHAR (50) NULL,
+    [Stul]                     NVARCHAR (50) NULL,
+    [zhivot_memo]              NTEXT         NULL,
+    CONSTRAINT [PriemVracha_Gastroenterologa_PishevaritelnayaSystemaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PriemVracha_Gastroenterologa_PishevaritelnayaSystemaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

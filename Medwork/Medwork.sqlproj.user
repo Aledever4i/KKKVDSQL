@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <StartupScript>(Пусто)</StartupScript>
+    <StartAction>StartNone</StartAction>
+    <TargetConnectionString>Data Source=176.100.138.93;Initial Catalog=Medwork;Persist Security Info=False;User ID=kkkvd\suhov;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;Authentication="Active Directory Password"</TargetConnectionString>
+  </PropertyGroup>
+</Project>

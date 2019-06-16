@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAKSIM\Guest]
+    AUTHORIZATION [MAKSIM\Guest];
+

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[FOMSV001] (
+    [RecId]   INT            IDENTITY (1, 1) NOT NULL,
+    [IDRB]    VARCHAR (30)   NOT NULL,
+    [RBNAME]  VARCHAR (1000) NOT NULL,
+    [DATEBEG] DATE           NULL,
+    [DATEEND] DATE           NULL,
+    CONSTRAINT [PK_FOMSV0012] PRIMARY KEY CLUSTERED ([RecId] ASC)
+);
+

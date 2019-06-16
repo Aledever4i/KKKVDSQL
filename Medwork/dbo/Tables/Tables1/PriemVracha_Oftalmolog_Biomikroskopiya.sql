@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[PriemVracha_Oftalmolog_Biomikroskopiya] (
+    [ID]                                                 INT           NOT NULL,
+    [PatID]                                              INT           NULL,
+    [Data]                                               DATETIME      NULL,
+    [PolozhenieGlaznihYablokPodvizhnostIKonvergentsiya]  NTEXT         NULL,
+    [Veki]                                               NVARCHAR (50) NULL,
+    [PolozhenieGlaznihYablokPodvizhnostIKonvergentsiya1] NTEXT         NULL,
+    [Veki1]                                              NVARCHAR (50) NULL,
+    [Konyunktiva]                                        NVARCHAR (50) NULL,
+    [Konyunktiva1]                                       NVARCHAR (50) NULL,
+    [Rogovitsa]                                          NVARCHAR (50) NULL,
+    [Rogovitsa1]                                         NVARCHAR (50) NULL,
+    [PerednyayaKamera]                                   NVARCHAR (50) NULL,
+    [PerednyayaKamera1]                                  NVARCHAR (50) NULL,
+    [Raduzhka]                                           NVARCHAR (50) NULL,
+    [Raduzhka1]                                          NVARCHAR (50) NULL,
+    [Hrustalik]                                          NVARCHAR (50) NULL,
+    [Hrustalik1]                                         NVARCHAR (50) NULL,
+    [SteklovidnoeTelo]                                   NVARCHAR (50) NULL,
+    [SteklovidnoeTelo1]                                  NVARCHAR (50) NULL,
+    [GlaznoeDno]                                         NVARCHAR (50) NULL,
+    [GlaznoeDno1]                                        NVARCHAR (50) NULL,
+    [Diagnoz]                                            NVARCHAR (50) NULL,
+    [DictCombo1]                                         NVARCHAR (50) NULL,
+    CONSTRAINT [PriemVracha_Oftalmolog_BiomikroskopiyaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PriemVracha_Oftalmolog_BiomikroskopiyaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

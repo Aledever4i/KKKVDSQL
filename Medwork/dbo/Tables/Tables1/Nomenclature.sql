@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Nomenclature] (
+    [ID]            INT            NOT NULL,
+    [Name]          NVARCHAR (100) NOT NULL,
+    [TradeName]     NVARCHAR (100) NULL,
+    [WorldName]     NVARCHAR (100) NULL,
+    [Unit]          INT            NULL,
+    [Form]          INT            NULL,
+    [Pack]          NVARCHAR (20)  NULL,
+    [Dosage]        NVARCHAR (20)  NULL,
+    [Producer]      NVARCHAR (100) NULL,
+    [QuantPerPlace] INT            NULL,
+    [Fraction]      INT            NULL,
+    [RestRate]      INT            NULL,
+    [Rest]          INT            NULL,
+    [NodeType]      NVARCHAR (6)   NULL,
+    [Parent]        INT            NULL,
+    [Kind]          INT            NULL,
+    [Type]          INT            NULL,
+    [Comment]       NVARCHAR (250) NULL,
+    [EnabledLevel]  TINYINT        NULL,
+    [Note]          NVARCHAR (250) NULL,
+    [Storage]       INT            NULL,
+    [CreateDate]    DATETIME       NULL,
+    [OperationId]   INT            NULL,
+    [Reserved]      INT            NULL
+);
+

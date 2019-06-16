@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Dnevnik] (
+    [ID]                         INT           NOT NULL,
+    [PatID]                      INT           NULL,
+    [MasterID]                   INT           NULL,
+    [TemperaturaGrad]            FLOAT (53)    NULL,
+    [ADsist]                     INT           NULL,
+    [ADdiast]                    INT           NULL,
+    [Chss]                       INT           NULL,
+    [Chdd]                       INT           NULL,
+    [Sostoyanie]                 NVARCHAR (50) NULL,
+    [ZhalobiPriOsmotre]          NTEXT         NULL,
+    [Soznanie]                   NVARCHAR (50) NULL,
+    [DopolnDannie]               NTEXT         NULL,
+    [ProvodimieManipulyatsii]    NTEXT         NULL,
+    [Stul]                       NVARCHAR (50) NULL,
+    [Data]                       DATETIME      NULL,
+    [Vrach]                      INT           NULL,
+    [DenBolezni]                 INT           NULL,
+    [DenPrebivaniyaVStatsionare] INT           NULL,
+    [VremyaOsmotra]              NVARCHAR (50) NULL,
+    [Time]                       INT           NULL,
+    CONSTRAINT [DnevnikPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [DnevnikToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

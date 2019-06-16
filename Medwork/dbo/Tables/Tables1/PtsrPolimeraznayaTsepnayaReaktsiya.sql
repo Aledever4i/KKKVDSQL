@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[PtsrPolimeraznayaTsepnayaReaktsiya] (
+    [ID]                         INT           NOT NULL,
+    [PatID]                      INT           NULL,
+    [DataIssledovaniya]          DATETIME      NULL,
+    [HlamidiiTrohomatis]         NVARCHAR (1)  NULL,
+    [UreoplazmaUrelitikum]       NVARCHAR (1)  NULL,
+    [MikoplazmaGenitalium]       NVARCHAR (1)  NULL,
+    [TrihomatisVaginalis]        NVARCHAR (1)  NULL,
+    [MikoplazmaHominis]          NVARCHAR (1)  NULL,
+    [GardnellaVainalis]          NVARCHAR (1)  NULL,
+    [VirusProstogoGerpesaIIITip] NVARCHAR (1)  NULL,
+    [Tsitomegalovirus]           NVARCHAR (1)  NULL,
+    [VirusEpshteynBarr]          NVARCHAR (1)  NULL,
+    [VirusGepatitaA]             NVARCHAR (1)  NULL,
+    [VirusGepatitaV]             NVARCHAR (1)  NULL,
+    [VirusGepatitaS]             NVARCHAR (1)  NULL,
+    [VirusGepatitaD]             NVARCHAR (1)  NULL,
+    [VirusGepatitaE]             NVARCHAR (1)  NULL,
+    [Vrach]                      INT           NULL,
+    [IssleduemiyMaterial]        NVARCHAR (50) NULL,
+    [IssleduemiyMaterial1]       NVARCHAR (50) NULL,
+    [DopDannie]                  NTEXT         NULL,
+    [GardnellaVaginalis]         NVARCHAR (1)  NULL,
+    CONSTRAINT [PtsrPolimeraznayaTsepnayaReaktsiyaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PtsrPolimeraznayaTsepnayaReaktsiyaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

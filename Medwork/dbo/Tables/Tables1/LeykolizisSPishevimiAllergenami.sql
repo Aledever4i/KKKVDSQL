@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[LeykolizisSPishevimiAllergenami] (
+    [ID]                     INT        NOT NULL,
+    [PatID]                  INT        NULL,
+    [NomerAnaliza1]          INT        NULL,
+    [DataProvedeniyaAnaliza] DATETIME   NULL,
+    [Moloko]                 FLOAT (53) NULL,
+    [MukaRisovaya]           FLOAT (53) NULL,
+    [MukaPshenichnaya]       FLOAT (53) NULL,
+    [OvsyankaSvinina]        FLOAT (53) NULL,
+    [MyasoKurinoe]           FLOAT (53) NULL,
+    [Zheltok]                FLOAT (53) NULL,
+    [Belok]                  FLOAT (53) NULL,
+    [Govyadina]              FLOAT (53) NULL,
+    [Mandarin]               FLOAT (53) NULL,
+    [Treska]                 FLOAT (53) NULL,
+    [Hek]                    FLOAT (53) NULL,
+    [Grechka]                FLOAT (53) NULL,
+    [Apelsin]                FLOAT (53) NULL,
+    [Limon]                  FLOAT (53) NULL,
+    [Ris]                    FLOAT (53) NULL,
+    [Vrach]                  INT        NULL,
+    CONSTRAINT [LeykolizisSPishevimiAllergenamiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [LeykolizisSPishevimiAllergenamiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

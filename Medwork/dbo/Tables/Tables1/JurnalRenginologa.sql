@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[JurnalRenginologa] (
+    [ID]                   INT            NOT NULL,
+    [PatID]                INT            NULL,
+    [MasterID]             INT            NULL,
+    [Diagnoz]              NVARCHAR (100) NULL,
+    [OblastIssledovaniya]  NVARCHAR (100) NULL,
+    [VidiIssledovaniya]    NVARCHAR (100) NULL,
+    [ChisloSnimkov]        INT            NULL,
+    [ChisloIssledovaniy]   INT            NULL,
+    [Дата]                 DATETIME       NULL,
+    [PatFullName]          NVARCHAR (50)  NULL,
+    [Автор]                INT            NULL,
+    [CardNum]              INT            NULL,
+    [Mesto]                INT            NULL,
+    [BirthDate]            DATETIME       NULL,
+    [Num]                  INT            NULL,
+    [PatAddress]           NVARCHAR (50)  NULL,
+    [Format]               NVARCHAR (50)  NULL,
+    [Nagruzka]             FLOAT (53)     NULL,
+    [DiagnozRentgenologa1] NVARCHAR (100) NULL,
+    [Dept]                 NVARCHAR (50)  NULL,
+    [DiagnozRentgenologa2] NVARCHAR (100) NULL,
+    CONSTRAINT [JurnalRenginologaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Form_035U] (
+    [ID]          INT            NOT NULL,
+    [MasterID]    INT            NULL,
+    [OrgName]     NVARCHAR (50)  NULL,
+    [LastName]    NVARCHAR (50)  NULL,
+    [FirstName]   NVARCHAR (50)  NULL,
+    [SecondName]  NVARCHAR (50)  NULL,
+    [Address]     NVARCHAR (50)  NULL,
+    [Work]        NVARCHAR (50)  NULL,
+    [Prof]        NVARCHAR (50)  NULL,
+    [ListNum]     NVARCHAR (50)  NULL,
+    [DaysNum]     NVARCHAR (50)  NULL,
+    [ZaklKom]     NTEXT          NULL,
+    [MemberKom]   NTEXT          NULL,
+    [ZaklVTEK]    NTEXT          NULL,
+    [Дата]        DATETIME       NULL,
+    [Автор]       INT            NULL,
+    [BirthDate]   DATETIME       NULL,
+    [MkbDo]       NVARCHAR (100) NULL,
+    [Mkb]         NVARCHAR (50)  NULL,
+    [PatId]       INT            NULL,
+    [MestoRaboti] NVARCHAR (50)  NULL,
+    [Dolzhnost]   NVARCHAR (50)  NULL,
+    CONSTRAINT [Form_035UPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+

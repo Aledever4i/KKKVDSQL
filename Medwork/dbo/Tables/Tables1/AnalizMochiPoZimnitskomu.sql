@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[AnalizMochiPoZimnitskomu] (
+    [PatID]                          INT        NULL,
+    [ID]                             INT        NOT NULL,
+    [KolVoMochi1]                    FLOAT (53) NULL,
+    [OtnPlotnost1]                   FLOAT (53) NULL,
+    [OtnPlotnost2]                   FLOAT (53) NULL,
+    [KolVoMochi2]                    FLOAT (53) NULL,
+    [OtnPlotnost3]                   FLOAT (53) NULL,
+    [KolVoMochi3]                    FLOAT (53) NULL,
+    [OtnPlotnost4]                   FLOAT (53) NULL,
+    [KolVoMochi4]                    FLOAT (53) NULL,
+    [OtnPlotnost5]                   FLOAT (53) NULL,
+    [KolVoMochi5]                    FLOAT (53) NULL,
+    [OtnPlotnost6]                   FLOAT (53) NULL,
+    [KolVoMochi6]                    FLOAT (53) NULL,
+    [OtnPlotnost7]                   FLOAT (53) NULL,
+    [KolVoMochi7]                    FLOAT (53) NULL,
+    [OtnPlotnost8]                   FLOAT (53) NULL,
+    [KolVoMochi8]                    FLOAT (53) NULL,
+    [KolichestvoVidelennoyZhidkosti] FLOAT (53) NULL,
+    [NomerAnaliza]                   INT        NULL,
+    [DataProvedeniyaAnaliza]         DATETIME   NULL,
+    [Vrach]                          INT        NULL,
+    CONSTRAINT [AnalizMochiPoZimnitskomuPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [AnalizMochiPoZimnitskomuToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

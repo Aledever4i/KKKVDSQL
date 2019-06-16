@@ -1,0 +1,5 @@
+﻿CREATE TABLE dbo.FOMS_H_ZL_LIST
+(
+    Id int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    InsertDate date NOT NULL DEFAULT GETDATE()
+)

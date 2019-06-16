@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Spirografiya] (
+    [ID]                                      INT          NOT NULL,
+    [PatID]                                   INT          NULL,
+    [NomerIssledovaniya]                      INT          NULL,
+    [DataIssledovanie]                        DATETIME     NULL,
+    [FEV1]                                    INT          NULL,
+    [FEV75]                                   INT          NULL,
+    [FEV50]                                   INT          NULL,
+    [FEV25]                                   INT          NULL,
+    [IndeksTifno]                             INT          NULL,
+    [Zhel]                                    INT          NULL,
+    [FEV1P]                                   INT          NULL,
+    [FEV75P]                                  INT          NULL,
+    [FEV50P]                                  INT          NULL,
+    [FEV25P]                                  INT          NULL,
+    [IndeksTifnoP]                            INT          NULL,
+    [ZhelP]                                   INT          NULL,
+    [BronhospazmNeViyavlen]                   NVARCHAR (1) NULL,
+    [NarushenieVentilyatsiiLegkihOtsutstvuet] NVARCHAR (1) NULL,
+    [NarushenieProhodimosti]                  INT          NULL,
+    [Stepen]                                  INT          NULL,
+    [Zaklyuchenie]                            INT          NULL,
+    [Vrach]                                   INT          NULL,
+    CONSTRAINT [SpirografiyaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [SpirografiyaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

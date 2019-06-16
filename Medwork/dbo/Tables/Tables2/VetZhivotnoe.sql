@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[VetZhivotnoe] (
+    [ID]                              INT           NOT NULL,
+    [PatID]                           INT           NULL,
+    [Vid]                             INT           NULL,
+    [Pol]                             INT           NULL,
+    [DataRozhd]                       DATETIME      NULL,
+    [Klichka]                         NVARCHAR (40) NULL,
+    [DopInfo]                         NTEXT         NULL,
+    [Smert]                           NVARCHAR (1)  NULL,
+    [DataSmerti]                      DATETIME      NULL,
+    [Poroda]                          NVARCHAR (30) NULL,
+    [Photo]                           IMAGE         NULL,
+    [PrichinaSmerti]                  NTEXT         NULL,
+    [OtmetkaOSterilizatsiiZhivotnogo] NVARCHAR (1)  NULL,
+    [OtmetkaOProshedshihRodah]        NVARCHAR (1)  NULL,
+    [RodovCount]                      INT           NULL,
+    [VozrastLetMesyatsev]             NVARCHAR (1)  NULL,
+    [Okras]                           NTEXT         NULL,
+    [OsobPrimet]                      NTEXT         NULL,
+    [Kleimo]                          NTEXT         NULL,
+    [NomerChipa]                      NVARCHAR (15) NULL,
+    CONSTRAINT [VetZhivotnoePrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [VetZhivotnoeToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[IssledovanieMokroti] (
+    [ID]                       INT          NOT NULL,
+    [PatID]                    INT          NULL,
+    [NomerAnaliza]             INT          NULL,
+    [DataProvedeniyaAnaliza]   DATETIME     NULL,
+    [Vrach]                    INT          NULL,
+    [HarakterMokroti]          INT          NULL,
+    [Tsvet]                    INT          NULL,
+    [Konsistentsiya]           INT          NULL,
+    [Reaktsiya3]               INT          NULL,
+    [Eritrotsiti]              INT          NULL,
+    [Eozinofili]               INT          NULL,
+    [PloskiyEpiteliy]          INT          NULL,
+    [TsilindricheskiyEpiteliy] INT          NULL,
+    [AlveolyarnieMakrofagi]    INT          NULL,
+    [KristalliGemotidina]      NVARCHAR (1) NULL,
+    [SpiraliKurshmana]         NVARCHAR (1) NULL,
+    [KristalliSharkoLeydena]   NVARCHAR (1) NULL,
+    [Detrit]                   NVARCHAR (1) NULL,
+    [Bakterii]                 NVARCHAR (1) NULL,
+    [DrozhzhevieGribki]        NVARCHAR (1) NULL,
+    [BK]                       NVARCHAR (1) NULL,
+    [AK]                       NVARCHAR (1) NULL,
+    CONSTRAINT [IssledovanieMokrotiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [IssledovanieMokrotiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

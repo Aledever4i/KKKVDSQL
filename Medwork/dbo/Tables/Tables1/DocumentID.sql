@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[DocumentID] (
+    [id] INT IDENTITY (1000000, 1) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+

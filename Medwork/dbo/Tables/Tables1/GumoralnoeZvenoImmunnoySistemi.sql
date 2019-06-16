@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[GumoralnoeZvenoImmunnoySistemi] (
+    [ID]           INT        NOT NULL,
+    [PatID]        INT        NULL,
+    [NomerAnaliza] INT        NULL,
+    [IgA]          FLOAT (53) NULL,
+    [IgE]          FLOAT (53) NULL,
+    [IgG]          FLOAT (53) NULL,
+    [IgM]          FLOAT (53) NULL,
+    [PHF]          FLOAT (53) NULL,
+    [TRF]          FLOAT (53) NULL,
+    [HPT]          FLOAT (53) NULL,
+    [OKletki]      FLOAT (53) NULL,
+    [C4]           FLOAT (53) NULL,
+    [Albumini]     FLOAT (53) NULL,
+    [PAB]          FLOAT (53) NULL,
+    [APA]          FLOAT (53) NULL,
+    [AAG]          FLOAT (53) NULL,
+    [AAT]          FLOAT (53) NULL,
+    [CPB]          FLOAT (53) NULL,
+    [Vrach]        INT        NULL,
+    [Data]         DATETIME   NULL,
+    CONSTRAINT [GumoralnoeZvenoImmunnoySistemiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [GumoralnoeZvenoImmunnoySistemiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Profosmotri] (
+    [ID]                                     INT           NOT NULL,
+    [PatID]                                  INT           NULL,
+    [MasterID]                               INT           NULL,
+    [Data]                                   DATETIME      NULL,
+    [Rost]                                   INT           NULL,
+    [MassaTela]                              INT           NULL,
+    [OstrotaZreniya]                         INT           NULL,
+    [VnutriglaznoeDavlenie]                  INT           NULL,
+    [OstrotaSluha]                           FLOAT (53)    NULL,
+    [Pnevmotahometriya]                      INT           NULL,
+    [ArterialnoeDavlenie]                    INT           NULL,
+    [Ekg]                                    NVARCHAR (50) NULL,
+    [OsmotrPolostiRta]                       NVARCHAR (50) NULL,
+    [Soe]                                    INT           NULL,
+    [Nv]                                     INT           NULL,
+    [Sahar]                                  INT           NULL,
+    [AnalizMochiNaBelok]                     NVARCHAR (50) NULL,
+    [Flyuorografiya]                         INT           NULL,
+    [Mammografiya]                           INT           NULL,
+    [GinekologicheskiyOsmotrSoVzyatiemMazka] NVARCHAR (50) NULL,
+    [PaltsevoeIssledovaniePryamoyKishki]     NVARCHAR (50) NULL,
+    CONSTRAINT [ProfosmotriPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [ProfosmotriToDannieProfilakticheskihOsmotrov] FOREIGN KEY ([MasterID]) REFERENCES [dbo].[DannieProfilakticheskihOsmotrov] ([ID]) ON DELETE CASCADE
+);
+

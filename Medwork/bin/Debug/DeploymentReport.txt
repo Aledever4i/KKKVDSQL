@@ -1,0 +1,83 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       Нет
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Удаляется столбец [dbo].[REESTR_temp_updating].[IDCASE], возможна потеря данных.
+
+** Действия пользователя
+     Удалить
+       [dbo].[ScheduleBlock] (Триггер)
+       [dbo].[DF_FOMSReports_IsImport] (Ограничение по умолчанию)
+     Создать
+       [Administrators] (Пользователь)
+       Членство в роли: <Без имени> (Членство в роли)
+       [dbo].[FOMS_H_KSG_KPG] (Таблица)
+       [dbo].[FOMS_H_PACIENT] (Таблица)
+       [dbo].[FOMS_H_SANK] (Таблица)
+       [dbo].[FOMS_H_SCHET] (Таблица)
+       [dbo].[FOMS_H_SL] (Таблица)
+       [dbo].[FOMS_H_USL] (Таблица)
+       [dbo].[FOMS_H_Z_SL] (Таблица)
+       [dbo].[FOMS_H_ZAP] (Таблица)
+       [dbo].[FOMS_H_ZGLV] (Таблица)
+       [dbo].[FOMS_H_ZL_LIST] (Таблица)
+       [dbo].[FOMS_IMPORT] (Таблица)
+       [dbo].[FOMS_L_PERS] (Таблица)
+       [dbo].[FOMS_L_PERS_LIST] (Таблица)
+       [dbo].[FOMS_L_ZGLV] (Таблица)
+       [dbo].[FOMS_Result_ill_st] (Таблица)
+       [dbo].[FOMS_S_RL] (Таблица)
+       [dbo].[FOMS_S_SCHET] (Таблица)
+       [dbo].[FOMS_S_SL] (Таблица)
+       [dbo].[FOMS_S_USL] (Таблица)
+       [dbo].[FOMS_S_ZGLV] (Таблица)
+       [dbo].[FOMS_V_FLK_P] (Таблица)
+       [dbo].[FOMS_V_OTKAZ] (Таблица)
+       [dbo].[FOMS_V_SCHET] (Таблица)
+       [dbo].[FOMS_V_SL] (Таблица)
+       [dbo].[FOMS_V_ZAP] (Таблица)
+       [dbo].[FOMSReportsImport] (Таблица)
+       [dbo].[FOMSRequestsImport] (Таблица)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[FOMS_H_ZL_LIST] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[FOMS_IMPORT] (Ограничение по умолчанию)
+       Ограничение по умолчанию: ограничение без названия для [dbo].[FOMSReports] (Ограничение по умолчанию)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_KSG_KPG] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_PACIENT] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_SANK] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_SCHET] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_SL] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_USL] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_Z_SL] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_ZAP] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_H_ZGLV] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_IMPORT] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_L_PERS] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_L_PERS_LIST] (Внешний ключ)
+       Внешний ключ: ограничение без названия для [dbo].[FOMS_S_RL] (Внешний ключ)
+       [dbo].[FOMSReportHClear] (Процедура)
+       [dbo].[FOMSReportLClear] (Процедура)
+       [dbo].[FOMSReportSClear] (Процедура)
+       [dbo].[FOMSReportVClear] (Процедура)
+       [dbo].[FOMSImportHReport] (Процедура)
+       [dbo].[FOMSImportLReport] (Процедура)
+       [dbo].[FOMSImportSReport] (Процедура)
+       [dbo].[FOMSImportVReport] (Процедура)
+     Изменить
+       [BUILTIN\Administrators] (Схема)
+       [kkkvd] (Схема)
+       [dbo].[REESTR_temp_updating] (Таблица)
+       [dbo].[UD_CountFirstConfition] (Функция)
+       [dbo].[UD_CountP] (Функция)
+       [dbo].[DirectionToChistovodnoeAdd] (Процедура)
+       [dbo].[FOMSImportReport] (Процедура)
+       [dbo].[SP_FinDocDet] (Процедура)
+       [dbo].[spLockDate] (Процедура)
+
+** Корректирующие действия
+
+Удаляется столбец [dbo].[REESTR_temp_updating].[IDCASE], возможна потеря данных.
+

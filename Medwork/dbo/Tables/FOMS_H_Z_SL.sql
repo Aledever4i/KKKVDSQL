@@ -1,0 +1,25 @@
+﻿CREATE TABLE dbo.FOMS_H_Z_SL
+(
+    Id INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    ZapId int NOT NULL REFERENCES dbo.FOMS_H_ZAP(Id),
+    IDCASE int NULL,
+    USL_OK int NULL,
+    VIDPOM int NULL,
+    FOR_POM int NULL,
+    NPR_MO varchar(6) NULL,
+    NPR_DATE date NULL,
+    LPU varchar(6) NULL,
+    DATE_Z_1 date NULL,
+    DATE_Z_2 date NULL,
+    KD_Z varchar(10) NULL,
+    VNOV_M int NULL,
+    RSLT int NULL,
+    ISHOD int NULL,
+    OS_SLUCH int NULL,
+    VB_P varchar(10) NULL,
+    IDSP int NULL,
+    SUMV decimal NULL,
+    OPLATA decimal NULL,
+    SUMP decimal NULL,
+    SANK_IT decimal NULL
+)

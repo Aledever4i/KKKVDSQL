@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[HolterovskoeMonitorirovanie] (
+    [ID]                                       INT      NOT NULL,
+    [PatID]                                    INT      NULL,
+    [Data]                                     DATETIME NULL,
+    [Vrach]                                    INT      NULL,
+    [OkonchanieZapisi]                         DATETIME NULL,
+    [Ritm]                                     NTEXT    NULL,
+    [SvedeniyaOPQQTPauzahOsobennostiRabotiEks] NTEXT    NULL,
+    [Dnem]                                     INT      NULL,
+    [Nochyu]                                   INT      NULL,
+    [Dnem1]                                    INT      NULL,
+    [Nochyu1]                                  INT      NULL,
+    [Dnem2]                                    INT      NULL,
+    [Nochyu2]                                  INT      NULL,
+    [Supraventrikulyarnie]                     NTEXT    NULL,
+    [Zheludochkovie]                           NTEXT    NULL,
+    [STT]                                      NTEXT    NULL,
+    [PrimechaniyaVariabelnost]                 NTEXT    NULL,
+    [NomerIssledovaniya]                       INT      NULL,
+    [DataIssledovanie]                         DATETIME NULL,
+    [AdSistolicheskoe]                         INT      NULL,
+    [AdDiastolicheskoe]                        INT      NULL,
+    [Kommentariy]                              NTEXT    NULL,
+    [Zaklyuchenie]                             NTEXT    NULL,
+    CONSTRAINT [HolterovskoeMonitorirovaniePrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [HolterovskoeMonitorirovanieToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

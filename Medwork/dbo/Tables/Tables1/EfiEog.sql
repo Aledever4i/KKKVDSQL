@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[EfiEog] (
+    [ID]                      INT           NOT NULL,
+    [PatID]                   INT           NULL,
+    [ObshayOSIsxodniUrovenPP] FLOAT (53)    NULL,
+    [ObshayOSMinPP]           FLOAT (53)    NULL,
+    [ObshayOSMaxPP]           FLOAT (53)    NULL,
+    [ObshayOSKoeficentArdena] INT           NULL,
+    [ObshayODKoeficentArdena] INT           NULL,
+    [ObshayODMaxPP]           FLOAT (53)    NULL,
+    [ObshayODMinPP]           FLOAT (53)    NULL,
+    [ObshayODIsxodniUrovenPP] FLOAT (53)    NULL,
+    [CentrODIsxodniUrovenPP]  FLOAT (53)    NULL,
+    [CentrODMinPP]            FLOAT (53)    NULL,
+    [CentrODMaxPP]            FLOAT (53)    NULL,
+    [CentrODKoeficentArdena]  INT           NULL,
+    [CentrOSIsxodniUrovenPP]  FLOAT (53)    NULL,
+    [CentrOSMinPP]            FLOAT (53)    NULL,
+    [CentrOSMaxPP]            FLOAT (53)    NULL,
+    [CentrOSKoeficentArdena]  INT           NULL,
+    [PriznakpotologiiOD]      NVARCHAR (71) NULL,
+    [PriznakpotologiiOS]      NVARCHAR (71) NULL,
+    [Prim]                    NTEXT         NULL,
+    CONSTRAINT [EfiEogPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [EfiEogToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

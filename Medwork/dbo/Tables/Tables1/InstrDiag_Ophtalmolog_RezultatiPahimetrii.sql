@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[InstrDiag_Ophtalmolog_RezultatiPahimetrii] (
+    [ID]       INT           NOT NULL,
+    [PatID]    INT           NULL,
+    [Data]     DATETIME      NULL,
+    [Vrach]    NVARCHAR (50) NULL,
+    [Tsentros] NVARCHAR (50) NULL,
+    [Verhos]   NVARCHAR (50) NULL,
+    [Nizos]    NVARCHAR (50) NULL,
+    [Verh1os]  NVARCHAR (50) NULL,
+    [Niz1os]   NVARCHAR (50) NULL,
+    [Nosos]    NVARCHAR (50) NULL,
+    [Visokos]  NVARCHAR (50) NULL,
+    [Nos1os]   NVARCHAR (50) NULL,
+    [Visok1os] NVARCHAR (50) NULL,
+    [Verh1od]  NVARCHAR (50) NULL,
+    [Verhod]   NVARCHAR (50) NULL,
+    [Tsentrod] NVARCHAR (50) NULL,
+    [Nizod]    NVARCHAR (50) NULL,
+    [Niz1od]   NVARCHAR (50) NULL,
+    [Visokod]  NVARCHAR (50) NULL,
+    [Visok1od] NVARCHAR (50) NULL,
+    [Nosod]    NVARCHAR (50) NULL,
+    [Nos1od]   NVARCHAR (50) NULL,
+    [Prim]     NTEXT         NULL,
+    CONSTRAINT [InstrDiag_Ophtalmolog_RezultatiPahimetriiPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [InstrDiag_Ophtalmolog_RezultatiPahimetriiToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

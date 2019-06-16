@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[PovtorniyPriMGematologa] (
+    [ID]                            INT           NOT NULL,
+    [PatID]                         INT           NULL,
+    [Data]                          DATETIME      NULL,
+    [PredvaritelniyDiagnoz]         NTEXT         NULL,
+    [Kozha]                         INT           NULL,
+    [PigmentatsiyaIDepigmentatsiya] NVARCHAR (35) NULL,
+    [Krovoizliyaniya]               NVARCHAR (35) NULL,
+    [Rubtsi]                        NVARCHAR (35) NULL,
+    [TroficheskieIzmeneniya]        NVARCHAR (35) NULL,
+    [SosudistieIzmeneniya]          NVARCHAR (35) NULL,
+    [FormaIHarakterVisipaniy]       NVARCHAR (35) NULL,
+    [Nogti]                         INT           NULL,
+    [Nogti1]                        INT           NULL,
+    [Nogti2]                        INT           NULL,
+    [Nogti3]                        INT           NULL,
+    [VidimieSlizistie]              INT           NULL,
+    [VidimieSlizistie1]             INT           NULL,
+    [LimfaticheskieUzli]            NTEXT         NULL,
+    [Mishtsi]                       INT           NULL,
+    [Mishtsi1]                      INT           NULL,
+    [MishciBoleznennost]            NVARCHAR (1)  NULL,
+    [DopolnitelnieDannie]           NTEXT         NULL,
+    [Vrach]                         NVARCHAR (50) NULL,
+    CONSTRAINT [PovtorniyPriMGematologaPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [PovtorniyPriMGematologaToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

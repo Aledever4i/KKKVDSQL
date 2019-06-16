@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[ProfosmotrOftalmolog] (
+    [ID]                  INT            NOT NULL,
+    [PatID]               INT            NULL,
+    [Data]                DATETIME       NULL,
+    [Vrach]               INT            NULL,
+    [Kommentrariy]        NTEXT          NULL,
+    [Zaklyuchenie]        NVARCHAR (100) NULL,
+    [Zhalobi]             NTEXT          NULL,
+    [AnamnezZabolevaniya] NTEXT          NULL,
+    [GruppaD]             NVARCHAR (2)   NULL,
+    [Vievleno]            NVARCHAR (10)  NULL,
+    [Radyzhka]            NVARCHAR (50)  NULL,
+    [Zrachok]             NVARCHAR (50)  NULL,
+    [GlaznoeDno]          NVARCHAR (50)  NULL,
+    [Setchatka]           NVARCHAR (50)  NULL,
+    [PglazBezKorr]        NVARCHAR (5)   NULL,
+    [PglazSKorr]          NVARCHAR (5)   NULL,
+    [LglazBezKorr]        NVARCHAR (5)   NULL,
+    [LglazSKorr]          NVARCHAR (5)   NULL,
+    [Polezrenie]          NVARCHAR (50)  NULL,
+    [DiagnozPoMkb10]      NVARCHAR (80)  NULL,
+    [KodPoMkb10]          NVARCHAR (10)  NULL,
+    [Recommendation]      NTEXT          NULL,
+    CONSTRAINT [ProfosmotrOftalmologPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [ProfosmotrOftalmologToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+

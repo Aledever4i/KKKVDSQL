@@ -1,0 +1,12 @@
+﻿CREATE PROCEDURE spGetSQL
+AS
+  SELECT [SQL] 
+  FROM 
+    tmpSQLGenerator 
+  ORDER BY ID
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[spGetSQL] TO PUBLIC
+    AS [dbo];
+

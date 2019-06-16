@@ -1,0 +1,2 @@
+﻿CREATE PROCEDURE dbo.[spBackupMedwork] AS
+BACKUP DATABASE [Medwork] TO  DISK = N'E:\public\_medwork\solutions\Default\BackUp\default.backup' WITH  INIT ,  NOUNLOAD ,  NAME = N'Medwork backup',  NOSKIP ,  STATS = 10,  NOFORMAT 

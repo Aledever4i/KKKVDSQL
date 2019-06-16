@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[Forma044U] (
+    [ID]                     INT            NOT NULL,
+    [PatID]                  INT            NULL,
+    [fio]                    NVARCHAR (50)  NULL,
+    [vozrast]                NVARCHAR (50)  NULL,
+    [pol]                    NVARCHAR (50)  NULL,
+    [izkakogootdelenia]      NVARCHAR (50)  NULL,
+    [Diagnoznapravivshego]   NVARCHAR (50)  NULL,
+    [Diagnoznapravivshego1]  NVARCHAR (255) NULL,
+    [Diagnozpripostuplenii]  NVARCHAR (50)  NULL,
+    [Diagnozpripostuplenii2] NVARCHAR (255) NULL,
+    [zhalobi1]               NVARCHAR (255) NULL,
+    [Zhalobi]                NTEXT          NULL,
+    [kemnazn]                NVARCHAR (50)  NULL,
+    [Mestproved]             NVARCHAR (50)  NULL,
+    [chelovek]               IMAGE          NULL,
+    [Vrach2]                 INT            NULL,
+    [VidyLech]               NTEXT          NULL,
+    [Epikriz]                NTEXT          NULL,
+    [vrachlech]              INT            NULL,
+    [Karta]                  NVARCHAR (50)  NULL,
+    [DocNum]                 NVARCHAR (50)  NULL,
+    [DocDate]                DATETIME       NULL,
+    [AssignedProcedures]     NTEXT          NULL,
+    CONSTRAINT [Forma044UPrimKey] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [Forma044UToPatForm] FOREIGN KEY ([ID]) REFERENCES [dbo].[PatForm] ([ID]) ON DELETE CASCADE
+);
+
