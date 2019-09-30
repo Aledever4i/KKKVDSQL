@@ -81,7 +81,7 @@ declare @c int
 
 	select @c=Count(*)
 	from deleted d, Payment p
-	where d.id=p.NomerScheta
+	where d.ID = p.NomerScheta
 
 if @c>0
 	raiserror('Нельзя удалять счёт, по которому есть оплаты',16,1)

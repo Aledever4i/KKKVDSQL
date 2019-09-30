@@ -1,5 +1,4 @@
-﻿
-CREATE PROCEDURE AddZaklDiag
+﻿CREATE PROCEDURE dbo.AddZaklDiag
 	@source nvarchar(256),
 	@SourceId int, 
 	@date DateTime,
@@ -11,38 +10,38 @@ CREATE PROCEDURE AddZaklDiag
 	@UserId int
 AS
 begin
-
 	Declare @PatFormId int, @id int
 	
-	Set @PatFormId=(select top 1 id from dbo.PatForm with (nolock) where PatId=@PatId and FormId=3754)
+	Set @PatFormId=(select top 1 ID from dbo.PatForm with (nolock) where PatID=@PatId and FormID=3754)
 	
-	if @PatFormId is null
-	begin
-		Set @PatFormId = IsNull((Select Max(ID)+1 From PatForm),1)
-		Insert Into PatForm (PatID, FormID, FormNo, AuthorId, CreateTime, UpdateTime, Security, ID)
-		Values (@PatId, 3754, 0, @UserId, GetDate(), GetDate(), 0, @PatFormId)	
+	if (@PatFormId IS NULL)
+	BEGIN
+		Set @PatFormId = IsNull((Select MAX(ID) + 1 From PatForm), 1)
+		INSERT INTO dbo.PatForm (PatID, FormID, FormNo, AuthorID, CreateTime, UpdateTime, Security, ID)
+			Values (@PatId, 3754, 0, @UserId, GETDATE(), GETDATE(), 0, @PatFormId)	
 		
 		Insert Into dbo.ListZaklDiag (ID, PatID)
-		Values (@PatFormId, @PatId)
-	end
-	else
-		update dbo.PatForm
-		set UpdateTime=GetDate()
-		where id=@PatFormId
+			Values (@PatFormId, @PatId)
+	END
+	ELSE
+	BEGIN
+		UPDATE dbo.PatForm SET UpdateTime = GETDATE() WHERE ID = @PatFormId
+	END
 		
-	set @id = (select top 1 id from dbo.ZaklDiag with (nolock) where SourceId=@SourceId and source=@source)
+	set @id = (select top 1 ID from dbo.ZaklDiag with (nolock) where sourceId=@SourceId and source=@source)
 	
 	if @id is null
 	begin
-		set @id=IsNull((select max(id)+1 from ZaklDiag),1)
+		set @id=IsNull((select max(ID)+1 from dbo.ZaklDiag),1)
+
 		insert into dbo.ZaklDiag
-		(id, [PatID], [MasterID], [Vrach], [Data], [first], [prof], [DiagCode], source, sourceId, AddToZaklDiag)
+		(ID, [PatID], [MasterID], [Vrach], [Data], [first], [prof], [DiagCode], source, sourceId, AddToZaklDiag)
 		Values
-		(@id, @PatId, @PatFormId, @DoctorId, @date, @isFirst, @isProf, @Diag, @source, @sourceId, 1)
+		(@id, @PatId, @PatFormId, @DoctorID, @date, @isFirst, @isProf, @Diag, @source, @sourceId, 1)
 	end
 	else
 		update dbo.ZaklDiag
-		set [Vrach]=@DoctorId, [Data]=@date, [first]=@isFirst, [prof]=@isProf, [DiagCode]=@Diag
-		where id=@id
+			set [Vrach] = @DoctorID, [Data] = @date, [first] = @isFirst, [prof] = @isProf, [DiagCode] = @Diag
+			where ID=@id
 	
 end

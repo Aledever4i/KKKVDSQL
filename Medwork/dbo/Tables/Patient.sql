@@ -253,30 +253,30 @@ AS begin
 	declare @t table (id int identity(1,1), Patid int, Location nvarchar(100), SDate datetime)
 	insert into @t
 		(Patid, Location, SDate)
-		select id, dbo.fnPatCardLocation(id), SectionSDate
+		select ID, dbo.fnPatCardLocation(ID), SectionSDate
 		from inserted
-		where dbo.fnPatCardLocation(id) is not null
+		where dbo.fnPatCardLocation(ID) is not null
 		
 	declare @CurrDate datetime
 	set @CurrDate=convert(datetime,convert(nvarchar,GetDate(),102),102)
-	delete from CardLocation where id in
+	delete from dbo.CardLocation where ID in
 		(
-		select CardLocation.id
-		from CardLocation, @t as t, CardLocation cl2
+		select CardLocation.ID
+		from dbo.CardLocation, @t as t, dbo.CardLocation cl2
 		where
-			t.PatId=CardLocation.MasterId
+			t.Patid=CardLocation.MasterID
 			and (CardLocation.CurrentLocation<>1 or CardLocation.CurrentLocation is null)
 			and IsNull(t.SDate, @CurrDate)<=CardLocation.SDate
 			and t.Location=CardLocation.Location
-			and cl2.MasterId=CardLocation.MasterId
-			and cl2.SDate<CardLocation.Sdate
+			and cl2.MasterID=CardLocation.MasterID
+			and cl2.SDate<CardLocation.SDate
 		)
-	delete from CardLocation where id in
+	delete from CardLocation where ID in
 		(
-		select CardLocation.id
+		select CardLocation.ID
 		from CardLocation, @t as t
 		where
-			t.PatId=CardLocation.MasterId
+			t.Patid=CardLocation.MasterID
 			and (CardLocation.CurrentLocation<>1 or CardLocation.CurrentLocation is null)
 			and IsNull(t.SDate, @CurrDate)<=CardLocation.SDate
 			and t.Location<>CardLocation.Location
@@ -285,49 +285,67 @@ AS begin
 		set SDate= null
 		from @t as t
 		where
-			t.PatId=CardLocation.MasterId
+			t.Patid=CardLocation.MasterID
 			and CardLocation.CurrentLocation=1
 			and t.SDate<=CardLocation.SDate
 			and t.Location=CardLocation.Location
 	update CardLocation
-		set SDate= IsNull(IsNull(t.Sdate, CardLocation.SDate), @CurrDate)
+		set SDate= IsNull(IsNull(t.SDate, CardLocation.SDate), @CurrDate)
 		from @t as t
 		where
-			t.PatId=CardLocation.MasterId
+			t.Patid=CardLocation.MasterID
 			and t.Location=CardLocation.Location
 			and CardLocation.SDate=
 			(
 				select max(SDate)
 				from CardLocation cl2
-				where cl2.MasterId=CardLocation.MasterId
+				where cl2.MasterID=CardLocation.MasterID
 			)
 	delete from @t
 		where id in
 		(
 			select t.id
 			from @t as t, CardLocation
-			where t.PatId=CardLocation.MasterId and t.Location=CardLocation.Location and CardLocation.SDate=
+			where t.Patid=CardLocation.MasterID and t.Location=CardLocation.Location and CardLocation.SDate=
 			(
 				select max(SDate)
 				from CardLocation cl2
-				where cl2.MasterId=CardLocation.MasterId
+				where cl2.MasterID=CardLocation.MasterID
 			)
 		)
 	insert into CardLocation
-		(id, MasterId, Location, SDate)
-		select id+IsNull((select max(id) from CardLocation),1), Patid, Location, IsNull(SDate,@CurrDate)
+		(id, MasterID, Location, SDate)
+		select id+IsNull((select max(ID) from dbo.CardLocation),1), Patid, Location, IsNull(SDate,@CurrDate)
 		from @t
 
 end
-
 GO
+
 CREATE TRIGGER [dbo].[CHANGETRACKING] 
 ON dbo.Patient 
 AFTER UPDATE
 AS
-set nocount on
-UPDATE dbo.Patient
-SET DateOfLastChange  =  GETDATE(), b_karta_aktualna=0 
-	WHERE ID IN (SELECT i.ID FROM INSERTED as i, deleted p where p.id=i.id and (i.LastName<>p.LastName
-		or i.FirstName<>p.FirstName or i.SecondName<>p.SecondName or i.CardNum<>p.CardNum
-		or i.Section<>p.Section 	or i.BirthDate<>p.BirthDate))
+BEGIN
+	SET NOCOUNT ON
+
+	UPDATE dbo.Patient
+		SET
+			DateOfLastChange = GETDATE(),
+			b_karta_aktualna = 0 
+		WHERE ID IN (
+			SELECT
+				i.ID
+				FROM INSERTED as i, deleted p
+				where
+					p.ID = i.ID
+					AND (
+						i.LastName <> p.LastName
+						OR i.FirstName <> p.FirstName
+						OR i.SecondName<>p.SecondName
+						or i.CardNum <> p.CardNum
+						or i.Section <> p.Section
+						or i.BirthDate <> p.BirthDate
+					)
+		)
+END
+GO

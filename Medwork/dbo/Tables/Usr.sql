@@ -75,7 +75,7 @@ CREATE TRIGGER tgUsr_Delete on dbo.Usr
 AFTER DELETE
 AS
 SET NOCOUNT ON
-DELETE dbo.Raspisanie WHERE MasterID IN (SELECT id FROM deleted)
+DELETE dbo.Raspisanie WHERE MasterID IN (SELECT ID FROM deleted)
 
 GO
 GRANT SELECT ON OBJECT::[dbo].[Usr] TO PUBLIC AS [dbo];

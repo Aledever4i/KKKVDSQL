@@ -1,6 +1,7 @@
-﻿CREATE TABLE [dbo].[Dept] (
-    [ID]             INT            NOT NULL,
-    [ParentID]       INT            CONSTRAINT [DF__Tree__ParentID__77BFCB91] DEFAULT (1) NULL,
+﻿CREATE TABLE dbo.Dept
+(
+    ID INT NOT NULL CONSTRAINT aaaaaTree_PK PRIMARY KEY CLUSTERED ,
+    [ParentID] INT CONSTRAINT DF__Tree__ParentID__77BFCB91 DEFAULT (1) NULL,
     [NodeType]       NVARCHAR (12)  NULL,
     [DeptTypeID]     INT            NULL,
     [DeptCode]       NVARCHAR (50)  NULL,
@@ -16,17 +17,14 @@
     [DefaultCheckIn] BIT            NULL,
     [LiveBuilding]   BIT            NULL,
     [OrgID]          INT            NULL,
-    [KabAddress]     NVARCHAR (120) NULL,
-    CONSTRAINT [aaaaaTree_PK] PRIMARY KEY CLUSTERED ([ID] ASC)
+    [KabAddress]     NVARCHAR (120) NULL
 );
 
 
 GO
-CREATE NONCLUSTERED INDEX [NodeType]
-    ON [dbo].[Dept]([NodeType] ASC);
+CREATE NONCLUSTERED INDEX NodeType ON dbo.Dept([NodeType] ASC);
 
 
 GO
-CREATE NONCLUSTERED INDEX [ParentID]
-    ON [dbo].[Dept]([ParentID] ASC);
+CREATE NONCLUSTERED INDEX ParentID ON dbo.Dept([ParentID] ASC);
 

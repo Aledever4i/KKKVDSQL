@@ -141,52 +141,54 @@ After Insert, Update, Delete
 AS begin
 	set nocount on
 
-	if (select count(*) from inserted i left join deleted d on i.id=d.id
-			where d.id is null and i.ParentId is not null)>0
+	if (select count(*) from inserted i left join deleted d on i.ID=d.ID
+			where d.ID is null and i.ParentId is not null)>0
 		return
 	
-	declare @dtable table (id int)
+	declare @dtable table (ID int)
 	
 	insert into @dtable
-	select d.id
-	from inserted i right join deleted d on i.id=d.id
-	where (i.id is null) or (i.id is not null and (IsNull(i.Service,'')<>IsNull(d.Service,'') or IsNull(i.ServOrMat,'')<>IsNull(d.ServOrMat,'')))
+	select d.ID
+	from inserted i right join deleted d on i.ID=d.ID
+	where (i.ID is null) or (i.ID is not null and (IsNull(i.Service,'')<>IsNull(d.Service,'') or IsNull(i.ServOrMat,'')<>IsNull(d.ServOrMat,'')))
 
 	while @@ROWCOUNT>0
 	begin			
 		insert into @dtable
-		select aps.id from BillService aps, @dtable dt
-			where dt.id=aps.ParentId and aps.id not in (select id from @dtable)
+		select aps.ID from dbo.BillService aps, @dtable dt
+			where
+				dt.ID = aps.ParentId
+				and aps.ID not in (select ID from @dtable)
 	end
 	
-	delete from BillService
+	delete from dbo.BillService
 		where ParentId in
-			(select id
+			(select ID
 			from @dtable
 			)
 			
-	declare @utable2 table(id int, Quant int, QuantNew int)	
+	declare @utable2 table(ID int, Quant int, QuantNew int)	
 	
 	insert into @utable2
-	select aps.id, d.Quant, i.Quant
-	from inserted i, deleted d, BillService aps
-	where i.id=d.id and i.Quant<>d.Quant
-				and i.id=aps.ParentId
+	select aps.ID, d.Quant, i.Quant
+	from inserted i, deleted d, dbo.BillService aps
+	where i.ID=d.ID and i.Quant<>d.Quant
+				and i.ID=aps.ParentId
 
 	while @@ROWCOUNT>0
 	begin
 		insert into @utable2
-		select aps.id, aps.Quant, case when u.Quant=0 then aps.Quant else aps.Quant*u.QuantNew/u.Quant end
-		from @utable2 u, BillService aps
-		where u.id=aps.ParentId	and aps.id not in (select id from @utable2)
+		select aps.ID, aps.Quant, case when u.Quant=0 then aps.Quant else aps.Quant*u.QuantNew/u.Quant end
+		from @utable2 u, dbo.BillService aps
+		where u.ID=aps.ParentId	and aps.ID not in (select ID from @utable2)
 	end	
 	
-	update BillService
+	update dbo.BillService
 	set Quant=u.QuantNew,
 			Summa=Price*u.QuantNew,
 			FakeService = null
 	from @utable2 u
-	where u.id=BillService.Id
+	where u.ID=BillService.ID
 	
 	declare @itable table (ID int identity (1,1), MasterID int, GUID nvarchar(32), Creator int, CreateDate datetime,
 												 PaymentType int, PaymentCode int, ServiceName nvarchar(255), Service nvarchar(50), Quant int, 
@@ -203,18 +205,18 @@ AS begin
 		(MasterID, GUID, Creator, CreateDate, PaymentType, PaymentCode, ServiceName, Service, Quant, 
 			ServOrMat,Resource, ParentId, RParentId, QuantReal, [feepercent], [Cost], [Fee], Kateg, BasePrice, Price, Summa,
 			BezTseni, ObjectId, FakeService)
-	select i.MasterId, replace(NewId(),'-',''), i.Creator, i.CreateDate, i.PaymentType, i.PaymentCode, LEFT('  '+pss.ServiceName, 255),
+	select i.MasterID, replace(NewId(),'-',''), i.Creator, i.CreateDate, i.PaymentType, i.PaymentCode, LEFT('  '+pss.ServiceName, 255),
 					pss.Service, pss.Quant*i.Quant, pss.ServOrMat, 
 					isNull(pss.KtoOkazyvaet, -- [#6287] во вложенных услугах может быть проставлено "кем оказывается" 
 					isNull((select top 1 ps2.KtoOkazyvaet from PaidService ps2 where ps2.Code=pss.Service),i.Resource)
 					),
-					null, i.id, i.QuantReal*pss.Quant,
-					pss.[feepercent], pss.[Cost], pss.[Fee],K.Name, pss.Price, pss.Price, pss.Price*pss.Quant, pss.BezTseni, pss.ObjectId, null
-	from inserted i left join deleted d on i.id=d.id
-				left join paidservice ps on ps.code=i.Service and i.ServOrMat='Услуга' and ps.nodetype<>'LABSERV',
-				paidsubservice pss left join Kategoriya K on K.id=pss.Kateg
-	where ((d.id is null) or (d.id is not null and (IsNull(i.Service,'')<>IsNull(d.Service,'') and  i.PaymentType<>1 and i.PaymentType<5)))
-				and pss.MasterId=ps.id and isnull(i.FakeService,0) <> 1
+					null, i.ID, i.QuantReal*pss.Quant,
+					pss.[feepercent], pss.[Cost], pss.[Fee],K.Name, pss.Price, pss.Price, pss.Price*pss.Quant, pss.BezTseni, pss.ObjectID, null
+	from inserted i left join deleted d on i.ID=d.ID
+				left join dbo.PaidService ps on ps.Code = i.Service and i.ServOrMat='Услуга' and ps.NodeType <> 'LABSERV',
+				dbo.PaidSubService pss left join Kategoriya K on K.ID=pss.Kateg
+	where ((d.ID is null) or (d.ID is not null and (IsNull(i.Service,'')<>IsNull(d.Service,'') and  i.PaymentType<>1 and i.PaymentType<5)))
+				and pss.MasterID=ps.ID and isnull(i.FakeService,0) <> 1
 
 	while @@ROWCOUNT>0 and @i<10
 	begin
@@ -222,16 +224,16 @@ AS begin
 		insert into @itable
 			(MasterID, GUID, Creator, CreateDate, PaymentType, PaymentCode, ServiceName, Service, Quant, 
 				ServOrMat,Resource, ParentId, QuantReal, [feepercent], [Cost], [Fee], Kateg, BezTseni, ObjectId, FakeService)
-		select i.MasterId, replace(NewId(),'-',''), i.Creator, i.CreateDate, i.PaymentType, i.PaymentCode, replicate(' ',2*@i+2)+pss.ServiceName,
+		select i.MasterID, replace(NewId(),'-',''), i.Creator, i.CreateDate, i.PaymentType, i.PaymentCode, replicate(' ',2*@i+2)+pss.ServiceName,
 						pss.Service, pss.Quant*i.Quant, pss.ServOrMat, 
 						isNull(pss.KtoOkazyvaet, -- [#6287] во вложенных услугах может быть проставлено "кем оказывается" 
 						isNull((select top 1 ps2.KtoOkazyvaet from PaidService ps2 where ps2.Code=pss.Service),i.Resource)
 						),
-						i.id, i.QuantReal*pss.Quant,
-						pss.[feepercent], pss.[Cost], pss.[Fee], K.Name, pss.BezTseni, pss.ObjectId, null
-		from @itable i left join paidservice ps on ps.code=i.Service and i.ServOrMat='Услуга' and ps.nodetype<>'LABSERV',
-					paidsubservice pss left join Kategoriya K on K.id=pss.Kateg
-		where pss.MasterId=ps.id and pss.Service not in (select Service from @itable where MasterId=i.MasterId and ParentId=i.Id)
+						i.ID, i.QuantReal*pss.Quant,
+						pss.[feepercent], pss.[Cost], pss.[Fee], K.Name, pss.BezTseni, pss.ObjectID, null
+		from @itable i left join dbo.PaidService ps on ps.Code = i.Service and i.ServOrMat='Услуга' and ps.NodeType <> 'LABSERV',
+					dbo.PaidSubService pss left join Kategoriya K on K.ID=pss.Kateg
+		where pss.MasterID=ps.ID and pss.Service not in (select Service from @itable where MasterID=i.MasterID and ParentId=i.ID)
 	end
 	
 	
@@ -239,13 +241,13 @@ AS begin
 	declare @t table (ID int,ServiceName nvarchar(255),Service nvarchar(50),ServOrMat nvarchar(50),ObjectId int)
 
 	insert into @t
-	SELECT i.ID, pss.ServiceName,pss.Service,pss.ServOrMat,pss.ObjectId
+	SELECT i.ID, pss.ServiceName,pss.Service,pss.ServOrMat,pss.ObjectID
 	FROM @itable i
-	LEFT JOIN paidservice ps on ps.code=i.service
-	LEFT JOIN paidsubservice pss on pss.masterid=ps.id
-	where ps.nodetype='LABSERV'
+	LEFT JOIN dbo.PaidService ps on ps.Code = i.Service
+	LEFT JOIN dbo.PaidSubService pss on pss.MasterID = ps.ID
+	where ps.NodeType = 'LABSERV'
 
-	IF (SELECT count(id) from @t)>0
+	IF (SELECT count(ID) from @t)>0
 	BEGIN
 		UPDATE    @itable
 		SET ServiceName = t1.ServiceName
@@ -253,39 +255,36 @@ AS begin
 			,ServOrMat = t1.ServOrMat
 			,ObjectId = t1.ObjectId
 		FROM @itable a
-		INNER JOIN @t t1 ON a.id = t1.id
+		INNER JOIN @t t1 ON a.ID = t1.ID
 	END
 
 	--прибитие цен у вложенных услуг, у которых есть цена в главной услуге
 	update i set Price=0, BasePrice=0, Summa=0, FakeService = null
-	from @itable i join Billservice pi on pi.id=i.RparentID and pi.Price>0
+	from @itable i join dbo.BillService pi on pi.ID = i.RParentId and pi.Price>0
 
 	declare @maxid int
 	
-	select @maxid=IsNull(max(id),0) from BillService
+	select @maxid=IsNull(max(ID),0) from BillService
 
 	insert into BillService
 		(ID, MasterID, GUID, Creator, CreateDate, PaymentType, PaymentCode, ServiceName, Service, Quant, 
-			ServOrMat,Resource, ParentId, QuantReal, [feepercent], [Cost], [Fee], Kateg, BasePrice, Price, Summa, BezTseni, ObjectId, FakeService)
+			ServOrMat,Resource, ParentId, QuantReal, [feepercent], [Cost], [Fee], kateg, BasePrice, Price, Summa, BezTseni, ObjectId, FakeService)
 		select ID+@maxid, MasterID, GUID, Creator, CreateDate, PaymentType, PaymentCode, ServiceName, Service, Quant, 
 			ServOrMat,Resource, IsNull(RParentId,ParentId+@maxId), QuantReal, [feepercent], [Cost], [Fee], Kateg, BasePrice, Price, Summa,
 			BezTseni, ObjectId, FakeService
 		from @itable
 
-
--- Поправить корневой LABSERV [#4733]
---declare @t table (ID int,ServiceName nvarchar(255),Service nvarchar(50),ServOrMat nvarchar(50),ServiceMeasure nvarchar(50),Duration int,ObjectId int)
 	delete from @t
 
 	insert into @t
   
-	SELECT i.ID, pss.ServiceName,pss.Service,pss.ServOrMat,pss.ObjectId
+	SELECT i.ID, pss.ServiceName,pss.Service,pss.ServOrMat,pss.ObjectID
 	FROM inserted i
-	LEFT JOIN paidservice ps on ps.code=i.service
-	LEFT JOIN paidsubservice pss on pss.masterid=ps.id
-	where ps.nodetype='LABSERV'
+	LEFT JOIN dbo.PaidService ps on ps.Code = i.Service
+	LEFT JOIN dbo.PaidSubService pss on pss.MasterID = ps.ID
+	where ps.NodeType = 'LABSERV'
 
-	IF (SELECT count(id) from @t)>0
+	IF (SELECT count(ID) from @t)>0
 	BEGIN
   	UPDATE BillService
 		SET ServiceName = t1.ServiceName
@@ -293,7 +292,7 @@ AS begin
 			,ServOrMat = t1.ServOrMat
 			,ObjectId = t1.ObjectId
 		FROM BillService a
-		INNER JOIN @t t1 ON a.id = t1.id
+		INNER JOIN @t t1 ON a.ID = t1.ID
 	END
 
 end

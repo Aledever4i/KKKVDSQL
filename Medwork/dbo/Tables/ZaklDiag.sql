@@ -35,13 +35,13 @@ BEGIN
 	SET NOCOUNT ON;
 	declare @PatFormId int, @id int, @patid int, @userid int, @AddToZaklDiag bit
 	
-	select top 1 @patid=i.patid, @userid=f.AuthorID, @AddToZaklDiag=AddToZaklDiag from inserted i join dbo.PatForm f on i.MasterID=f.id order by f.id desc
+	select top 1 @patid=i.PatID, @userid=f.AuthorID, @AddToZaklDiag=AddToZaklDiag from inserted i join dbo.PatForm f on i.MasterID=f.ID order by f.ID desc
 	
-	Set @PatFormId=(select top 1 id from dbo.PatForm with (nolock) where PatId=@PatId and FormId=3754)
-	if @PatFormId is null
+	Set @PatFormId=(select top 1 ID from dbo.PatForm with (nolock) where PatID=@PatId and FormID=3754)
+	if (@PatFormId is null)
 	begin
 		Set @PatFormId = IsNull((Select Max(ID)+1 From PatForm),1)
-		Insert Into dbo.PatForm (PatID, FormID, FormNo, AuthorId, CreateTime, UpdateTime, Security, ID)
+		Insert Into dbo.PatForm (PatID, FormID, FormNo, AuthorID, CreateTime, UpdateTime, Security, ID)
 		Values (@PatId, 3754, 0, @UserId, GetDate(), GetDate(), 0, @PatFormId)
 		
 		Insert Into dbo.ListZaklDiag (ID, PatID)

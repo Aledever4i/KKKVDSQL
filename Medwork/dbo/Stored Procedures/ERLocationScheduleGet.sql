@@ -1,15 +1,29 @@
 ﻿CREATE PROCEDURE dbo.ERLocationScheduleGet
-	@ResourceID int
+	@ResourceID int,
+	@StartDate date,
+	@EndDate date
 AS
 BEGIN
-	SELECT
-		*
-		FROM dbo.Usr AS usr
-		JOIN dbo.daySchedules AS schedules ON schedules.ResourceID = usr.ID
-		JOIN dbo.TimeIntervals AS ti ON ti.DayScheduleID = schedules.ID
-		WHERE
-			schedules.ResourceID = @ResourceID
-			AND ti.Type = 1 -- 1 - Запись на приём
+	DECLARE @Schedules table (ScheduleId int, [Date] date, IsActive bit)
+
+	INSERT INTO @Schedules (
+		ScheduleId,
+		[Date],
+		IsActive
+		)
+		SELECT
+			schedules.ID,
+			cp.[Date],
+			cp.isAct
+			FROM dbo.daySchedules AS schedules
+			JOIN dbo.CorrectionPatterns AS cp ON cp.DayScheduleID = schedules.ID
+			JOIN dbo.TimeIntervals AS ti ON ti.DayScheduleID = schedules.ID
+			LEFT JOIN dbo.Dept AS cabinet ON '-' + cabinet.ID = ti.LinkedResourceID
+			WHERE
+				schedules.ResourceID = @ResourceID
+				AND ti.Type = 1 -- 1 - Запись на приём
+
+
 
 END
 

@@ -68,7 +68,7 @@ AS
 BEGIN
  set nocount on
  declare @z int
- select @z=count(1) from patform where parentid in (select id from deleted)
+ select @z=count(1) from dbo.PatForm where ParentID IN (select ID from deleted)
  if @z>0
   begin
    RAISERROR ('Can`t delete item without deleting children.', 16, 10)
@@ -76,10 +76,10 @@ BEGIN
   end
  else
  begin
-  UPDATE billservice SET PatFormID = NULL
+  UPDATE dbo.BillService SET PatFormID = NULL
   where PatFormID in (select ID from DELETED)
-  UPDATE appointmentservice SET PatFormID = NULL
-  where PatFormID in (select ID from DELETED)
+  UPDATE dbo.AppointmentService SET PatFormId = NULL
+  where PatFormId in (select ID from DELETED)
  end  
 END
 

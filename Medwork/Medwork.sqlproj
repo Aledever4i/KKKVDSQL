@@ -398,5 +398,8 @@
     <Build Include="dbo\Tables\ListZaklDiag.sql" />
     <Build Include="dbo\Tables\ZaklDiag.sql" />
     <Build Include="dbo\Tables\Raspisanie.sql" />
+    <Build Include="dbo\Tables\Dept.sql" />
+    <Build Include="dbo\Tables\DeptType.sql" />
+    <Build Include="dbo\Tables\NapravlenieDeleteLog.sql" />
   </ItemGroup>
 </Project>

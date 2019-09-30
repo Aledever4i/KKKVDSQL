@@ -66,16 +66,16 @@ BEGIN
           from
                (
                select
-                    d.PatId,
-                    sum(isnull(d.summa,0)) value,
+                    d.PatID,
+                    sum(isnull(d.Summa,0)) value,
                     d.PatId2
                from     deleted d
                where isnull(d.DocNumber,'') <> ''
                	and d.PayType=0
-               group by d.PatId, d.PatId2
+               group by d.PatID, d.PatId2
                )x
           where
-	          	IsNull(x.Patid2,x.PatId)=patient.id
+	          	IsNull(x.Patid2,x.PatId)=patient.ID
                
                
           update dbo.Patient
@@ -83,18 +83,18 @@ BEGIN
           from
                (
                select
-                    i.PatId,
-                    sum(isnull(i.summa,0)) value,
+                    i.PatID,
+                    sum(isnull(i.Summa,0)) value,
                     i.PatId2
                from     
                      inserted i               
           
                where isnull(i.DocNumber,'') <> ''
                	and i.PayType=0
-               group by i.PatId, i.PatId2
+               group by i.PatID, i.PatId2
                )x
           where
-	          	IsNull(x.Patid2,x.PatId)=patient.id
+	          	IsNull(x.Patid2,x.PatID)=patient.ID
      
 END
 
@@ -127,19 +127,19 @@ SET NOCOUNT ON
 IF @rowcnt=1
 BEGIN
 	SELECT @NomerScheta=NomerScheta,@ID=ID FROM DELETED
-	IF (SELECT SUM(summa)
+	IF (SELECT SUM(Summa)
 		FROM Payment P WITH (NOLOCK) 
 		WHERE (NomerScheta=@NomerScheta) AND (ID<>@ID)
 		) < 0
 	RAISERROR('<INFO>Нельзя удалить оплату, т.к. сумма возвратов по счету превышает сумму оставшихся оплат</INFO>',16,1)	
 END
 
-update bill
-set void='-'
-from deleted d left join inserted i on i.id=d.id
-where d.NomerScheta=bill.id and i.id is null
+update dbo.Bill
+set Void = '-'
+from deleted d left join inserted i on i.ID=d.ID
+where d.NomerScheta=Bill.ID and i.ID is null
 	
 update BillService set PaymentID=null 
-where PaymentID in (select d.ID from deleted d left join inserted i on i.id=d.id where i.id is null)
+where PaymentID in (select d.ID from deleted d left join inserted i on i.ID=d.ID where i.ID is null)
 
 END

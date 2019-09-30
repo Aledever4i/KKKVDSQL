@@ -58,16 +58,16 @@ AS
 set nocount on
 	update SubService set Price=i.BasePrice, ServiceName=i.ServiceName
 	from  inserted i
-	where SubService.code=i.code and SubService.Reference=1
+	where SubService.Code=i.Code and SubService.Reference=1
 	update dbo.Service set Price=Price-
 	(
-		select sum(ps.BasePrice*ss.Quant)
+		select sum(ps.BasePrice*ss.quant)
 		from SubService ss, deleted ps
-		where ss.code=ps.code and service.id=ss.MasterId and ss.Reference=1
+		where ss.Code=ps.Code and service.ID=ss.MasterID and ss.Reference=1
 	)+
 	(
-		select sum(ps.BasePrice*ss.Quant)
+		select sum(ps.BasePrice*ss.quant)
 		from SubService ss, inserted ps
-		where ss.code=ps.code and service.id=ss.MasterId and ss.Reference=1
+		where ss.Code=ps.Code and service.ID=ss.MasterID and ss.Reference=1
 	)
 	where AutoRefresh=1

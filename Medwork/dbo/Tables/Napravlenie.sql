@@ -86,7 +86,7 @@ begin
 
 	--Добавление новых записей в таблицу вызовов на дом
 	Insert Into VizovNaDom
-		select ISNULL(((select max(id) from VizovNaDom)+(select count(*) from inserted as b where b.id>=a.id)),1) as id,
+		select ISNULL(((select max(ID) from VizovNaDom)+(select count(*) from inserted as b where b.ID>=a.ID)),1) as id,
 			Null as MasterID, Patient.CardNum as CardNum, a.TselVizita as Povod,
 			a.TipPriema as CallType, a.DataPriema as MakeDate, Null as CallHour,
 			Null as Diagnoz, a.Resource as RunDoctor, Null as DoneHelp, DatePart(hour, a.VremyaPriema) as RunHour,
@@ -94,25 +94,25 @@ begin
 			CAST(ISNULL(Patient.AdresGorod,'')+ISNULL(', р-н. '+Patient.AdresRaion,'')+ISNULL(', '+Patient.AdresUlitsa,'')+
 				ISNULL(', д. '+Patient.Adres,'')+ISNULL(', корп. '+Patient.AdresKorpus,'')+
 				ISNULL(', кв. '+Patient.AdresKvartira,'') as nvarchar(100)) as PatAddress,
-			PatId as PatId,
+			PatID as PatId,
 			CAST(ISNULL('дом. '+Patient.DomTelefon,'')+
 				ISNULL(' моб. '+Patient.MobTelefon,'')+
 				ISNULL(' раб. '+Patient.RabTelefon,'') as nvarchar(50)) as PatPhone,
 			Patient.LastName as LastName, Patient.FirstName as FirstName,
 			Patient.SecondName as SecondName,
-			a.id as IdNapr
+			a.ID as IdNapr
 		from inserted a, Patient
-		where Patient.id=a.PatId and a.MestoPriema='на дому' and (a.id not in (select IdNapr from VizovNaDom where IdNapr is not null))
+		where Patient.ID=a.PatID and a.MestoPriema='на дому' and (a.ID not in (select IdNapr from VizovNaDom where IdNapr is not null))
 	--Обновление старых вызовов на дом
 	Update VizovNaDom
 		set 	Povod=a.TselVizita, MakeDate=a.DataPriema, RunDoctor=a.Resource,
 			RunHour=DatePart(hour, a.VremyaPriema), Автор=a.Registrator,
 			Дата=a.DataNapravleniya, CallType=a.TipPriema
 		from inserted a, Patient
-		where Patient.id=a.PatId and a.MestoPriema='на дому' and a.id=VizovNaDom.IdNapr
+		where Patient.ID=a.PatID and a.MestoPriema='на дому' and a.ID=VizovNaDom.IdNapr
 
 	--Удаление, тех у кого сменилось место приёма
-		delete VizovNaDom Where IdNapr in (select id from inserted where MestoPriema<>'на дому')
+		delete VizovNaDom Where IdNapr in (select ID from inserted where MestoPriema<>'на дому')
 end
 
 GO
@@ -129,13 +129,32 @@ AS begin
 	@Diag nvarchar(7),
 	@UserId int
 
-	select top 1 @SourceId=i.id, @date=i.DataNapravleniya, @PatId=i.PatId, @Diag=i.DiagCode, @DoctorId=i.Resource, @UserId=p.AuthorId
-	from inserted i left join patform p on i.id=p.id
+	select top 1 @SourceId=i.ID, @date=i.DataNapravleniya, @PatId=i.PatID, @Diag=i.DiagCode, @DoctorId=i.Resource, @UserId = p.AuthorID
+	from inserted i left join dbo.PatForm p on i.ID=p.ID
 
 	if @DoctorId = 0
 		SET @DoctorId = @UserId
 	
-	if IsNull(@Diag,'')<>''
-		exec AddZaklDiag 'Napravlenie',	@SourceId, @date,	@DoctorId, @PatId, 0,	0, @Diag,	@UserId
+	if ISNULL(@Diag,'') <> ''
+		exec dbo.AddZaklDiag 'Napravlenie',	@SourceId, @date, @DoctorId, @PatId, 0, 0, @Diag, @UserId
 end
+GO
 
+CREATE TRIGGER dbo.Napravlenie_Delete
+	ON dbo.Napravlenie
+	FOR DELETE
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	DECLARE @s varchar(200) = CURRENT_USER
+
+	INSERT INTO dbo.NapravlenieDeleteLog (
+		[User],
+		NapravlenieId
+		)
+		SELECT
+			@s,
+			deleted.ID
+			FROM deleted
+END
